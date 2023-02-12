@@ -1,0 +1,34 @@
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
+
+const CategoryCard = () => {
+  return (
+    <>
+      <Card
+        sx={{
+          width: 563,
+          height: 150,
+          display: "flex",
+          alignItems: "center",
+          boxShadow: "0px 5px 4px rgba(0, 0, 0, 0.25)",
+        }}
+      >
+        <Box sx={{ height: 170, width: 270, display: "contents" }}>
+          <CardMedia
+            image={'img1'}
+            sx={{ height: 100, width: 270 }}
+            component="img"
+          ></CardMedia>
+        </Box>
+        <CardContent sx={{ width: "100%" }} component="div">
+          <Typography variant="h5" align="center">
+            Sunglasses{" "}
+          </Typography>
+        </CardContent>
+      </Card>
+    </>
+  );
+};
+
+export default CategoryCard;
