@@ -21,7 +21,7 @@ const Cards = ({ value }) => {
             container='img'
               sx={{ height: 140 }}
               image={value?.imageUrl}
-              title="green iguana"
+              title="fremkart"
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="body"  color="secondary">

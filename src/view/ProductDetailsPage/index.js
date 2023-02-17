@@ -36,6 +36,8 @@ import {
 import GlassCard from "../../Examples/GlassCard";
 import Cards from "../../Examples/Card";
 import ColorCard from "../../Examples/ColorCard";
+import { useState } from "react";
+import BasicModal from "../../Components/Modal";
 
 const ProductDetailsPage = () => {
   const navigate = useNavigate();
@@ -52,7 +54,8 @@ const ProductDetailsPage = () => {
   } = useSelector((state) => ({
     ...state.framekartData,
   }));
-
+  const [show, unShow] = useState(false);
+  const [show1, unShow1] = useState(false);
   useEffect(() => {
     dispatch(fetchSingleGlass(id));
     dispatch(fatchSunglasses());
@@ -145,7 +148,7 @@ const ProductDetailsPage = () => {
           >
             <ImageSliderCarousel imageUrls={Gallery?.data} />
           </Box>
-          {/* mobile view */}
+          {/* ....................................................................................mobile view */}
           <Box
             sx={{
               display: { xs: "flex", md: "none", xl: "none" },
@@ -168,6 +171,7 @@ const ProductDetailsPage = () => {
             >
               Photo
             </Button>
+
             <Button
               variant="outlined"
               color="primary"
@@ -179,9 +183,11 @@ const ProductDetailsPage = () => {
                   color: "white.main",
                 },
               }}
+              onClick={() => unShow(true)}
             >
               360
             </Button>
+
             <Button
               variant="outlined"
               color="primary"
@@ -193,6 +199,7 @@ const ProductDetailsPage = () => {
                   color: "white.main",
                 },
               }}
+              onClick={() => unShow1(true)}
             >
               Try On
             </Button>
@@ -284,7 +291,7 @@ const ProductDetailsPage = () => {
               {summary?.data?.description}
             </Typography>
           </Box>
-          {/* dextop view */}
+          {/* dextop view..........................<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */}
           <Box
             sx={{
               height: { xs: "100%", md: "20rem", xl: "20rem" },
@@ -343,6 +350,7 @@ const ProductDetailsPage = () => {
               >
                 <IconButton aria-label="remove" size="small">
                   <FavoriteBorder
+                    onClick={() => navigate("/selectGlass-page")}
                     fontSize="inherit"
                     sx={{ fontSize: "1.5rem", color: "secondary.main" }}
                   />
@@ -366,7 +374,14 @@ const ProductDetailsPage = () => {
               Description
             </Typography>
             <Typography variant="body1" color="initial">
-              {summary?.data?.description}
+              {summary?.data?.description} Using advanced edging technology and
+              high-quality materials, our premium sunglasses have a luxurious
+              feel with subtly curved lenses. Made with lightweight TR90
+              plastic, these large square sunglasses have a striking layered
+              design. The matte translucent front rim features a dark
+              tortoiseshell overlay and dark tortoiseshell temple arms. A metal
+              brow bar adds a modern touch. Please note, the actual pattern on
+              eyeglasses may vary slightly from the one pictured.
             </Typography>
           </Box>
         </Box>{" "}
@@ -392,29 +407,35 @@ const ProductDetailsPage = () => {
             >
               Photo
             </Button>
+
             <Button
               variant="outlined"
               color="primary"
               sx={{
                 borderRadius: "0 0 0 0",
+                width: "6rem",
                 "&:hover": {
                   bgcolor: "primary.main",
                   color: "white.main",
                 },
               }}
+              onClick={() => unShow(true)}
             >
               360
             </Button>
+
             <Button
               variant="outlined"
               color="primary"
               sx={{
                 borderRadius: "0 15px 0 0",
+                width: "6rem",
                 "&:hover": {
                   bgcolor: "primary.main",
                   color: "white.main",
                 },
               }}
+              onClick={() => unShow1(true)}
             >
               Try On
             </Button>
@@ -532,37 +553,37 @@ const ProductDetailsPage = () => {
           </Stack>
         </Box>
         <Box
+          sx={{
+            mt: 2,
+            display: { xs: "flex", md: "none", xl: "none" },
+            justifyContent: "space-between",
+            flexDirection: "column",
+          }}
+        >
+          <Typography variant="body1" color="initial">
+            Check delivery in your city
+          </Typography>
+          <Box
             sx={{
-              mt: 2,
-              display: {xs: "flex" , md: 'none', xl: 'none'},
-              justifyContent: "space-between",
-              flexDirection: "column",
+              display: "flex",
+              alignItems: "center",
+              bgcolor: "white.main",
+              boxShadow: "1px 2px 4px rgba(0, 0, 0, 0.15)",
+              borderRadius: "7px",
             }}
           >
-            <Typography variant="body1" color="initial">
-              Check delivery in your city
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                bgcolor: "white.main",
-                boxShadow: "1px 2px 4px rgba(0, 0, 0, 0.15)",
-                borderRadius: "7px",
-              }}
-            >
-              <LocationOn sx={{ color: "primary.main", mr: 1 }} />
-              <InputBase
-                placeholder="Enter Your pin"
-                inputProps={{ "aria-label": "Enter your pin" }}
-              />
-              <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-                <Typography variant="body1" color="primary" fontWeight={500}>
-                  Check
-                </Typography>
-              </IconButton>
-            </Box>
+            <LocationOn sx={{ color: "primary.main", mr: 1 }} />
+            <InputBase
+              placeholder="Enter Your pin"
+              inputProps={{ "aria-label": "Enter your pin" }}
+            />
+            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+              <Typography variant="body1" color="primary" fontWeight={500}>
+                Check
+              </Typography>
+            </IconButton>
           </Box>
+        </Box>
         <Box marginTop={2}>
           <Stack direction="column" spacing={4}>
             <Box sx={{ width: "100%", position: "relative" }}>
@@ -579,7 +600,6 @@ const ProductDetailsPage = () => {
             </Box>
           </Stack>
         </Box>
-       
         <Box marginTop={3} width={"100%"} display={"flex"}>
           {air &&
             air.length > 0 &&
@@ -719,6 +739,76 @@ const ProductDetailsPage = () => {
           ) : null}
         </Box>
       </Container>
+      <BasicModal show={show} width={"75%"} unShow={unShow}>
+        <Box
+          sx={{
+            position: "relative",
+            display: { xs: "none", md: "block", xl: "block" },
+            alignItems: "flex-start",
+          }}
+        >
+          {" "}
+          <Typography variant="h5" fontWeight={700}>
+            Related products
+          </Typography>
+          {summary?.data?.type === "Eyeglasses" ? (
+            <Stack direction="row" spacing={2}>
+              {frameglass &&
+                frameglass.length > 0 &&
+                frameglass.slice(0, 4).map((value) => {
+                  return <GlassCard value={value?.data} key={value.id} />;
+                })}
+            </Stack>
+          ) : null}
+          {summary?.data?.type === "Sunglasses" ? (
+            <Stack direction="row" spacing={2}>
+              {sunglass &&
+                sunglass.length > 0 &&
+                sunglass.slice(0, 4).map((value) => {
+                  return <GlassCard value={value?.data} key={value.id} />;
+                })}
+            </Stack>
+          ) : null}
+          {summary?.data?.type === "Contact Lens" ? (
+            <Stack direction="row" spacing={2}>
+              {eyeglass &&
+                eyeglass.length > 0 &&
+                eyeglass.slice(0, 4).map((value) => {
+                  return <GlassCard value={value?.data} key={value.id} />;
+                })}
+            </Stack>
+          ) : null}
+        </Box>
+      </BasicModal>
+      <BasicModal show={show1} unShow={unShow1} height={600} overflowY={true}>
+        <Box marginTop={3} width={"100%"} display={"flex"}>
+          {air &&
+            air.length > 0 &&
+            air.slice(0, 3).map((airs, i) => (
+              <ImageList
+                sx={{ width: "100%", height: 200 }}
+                cols={3}
+                rowHeight={164}
+                key={i}
+                variant="quilted"
+              >
+                {airs?.data &&
+                  airs?.data.length > 0 &&
+                  airs?.data.map((item) => (
+                    <ImageListItem key={item.img} cols={1} rows={1}>
+                      <img
+                        src={`${item?.imageUrl}?w=800&h=300&fit=contain&auto=format`}
+                        srcSet={`${item?.imageUrl}?w=800&h=300&fit=contain&auto=format&dpr=2 2x`}
+                        alt={"...."}
+                        loading="lazy"
+                        style={{ width: "20rem", objectFit: "contain" }}
+                      />
+                    </ImageListItem>
+                  ))}
+              </ImageList>
+            ))}
+        </Box>
+      </BasicModal>
     </>
   );
 };

@@ -11,7 +11,6 @@ import {
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 export default function BottomNavigationBar() {
   const [value, setValue] = React.useState("Home");
   //   console.log(value, 'mmmmmmmm')
@@ -44,26 +43,25 @@ export default function BottomNavigationBar() {
   const location = useLocation();
   return (
     <BottomNavigation
-    style={{
+      style={{
         transitionDuration: "200ms",
         overflow: "hidden",
-        bottom: `${visible ?  "0px" : "-120px"}`,
-        display: `${
-          location.pathname === "/register-page" ? "none" : "flex"
-        }`,
+        bottom: `${visible ? "0px" : "-120px"}`,
+        display: `${location.pathname === "/register-page" ? "none" : "flex"}`,
       }}
-     
       sx={{
         width: "100%",
-        bgcolor: "#372f2f ",
+        bgcolor: "white.main ",
         zIndex: "999999",
         position: "fixed",
         bottom: 0,
+        borderTop: 0.5,
+        borderColor: "primary.main",
         "& .MuiBottomNavigationAction-root": {
-          color: "#fff",
+          color: "secondary.main",
         },
         "& .Mui-selected": {
-          color: "#fa5d29",
+          color: "primary.main",
         },
         // "& .MuiSvgIcon-root": {
         //   color: "#fa5d29",
@@ -76,35 +74,50 @@ export default function BottomNavigationBar() {
         label="Home"
         value="Home"
         onClick={() => navigate("/")}
-        style={{ color: `${value === "Home" ? "#fa5d29" : "#fff"}`, minWidth: '25px' }}
+        sx={{
+          color: `${value === "Home" ? "#fa5d29" : "secondary.main"}`,
+          minWidth: "25px",
+        }}
         icon={<Home />}
       />
       <BottomNavigationAction
         label="Profile"
         value="Profile"
         onClick={() => navigate("/profile-page")}
-        style={{ color: `${value === "Profile" ? "#fa5d29" : "#fff"}`, minWidth: '25px' }}
+        sx={{
+          color: `${value === "Profile" ? "#fa5d29" : "secondary.main"}`,
+          minWidth: "25px",
+        }}
         icon={<AccountCircle />}
       />
       <BottomNavigationAction
         label="Order "
         value="Order History"
         onClick={() => navigate("/orderHistory-page")}
-        style={{ color: `${value === "Order History" ? "#fa5d29" : "#fff"}`, minWidth: '25px' }}
+        sx={{
+          color: `${value === "Order History" ? "#fa5d29" : "secondary.main"}`,
+          minWidth: "25px",
+        }}
         icon={<LocalMall />}
       />
       <BottomNavigationAction
         label="Category"
         value="Category"
         onClick={() => navigate("/Categories-page")}
-        style={{ color: `${value === "Category" ? "#fa5d29" : "#fff"}` , minWidth: '25px' }}
+        sx={{
+          color: `${value === "Category" ? "#fa5d29" : "secondary.main"}`,
+          minWidth: "25px",
+        }}
         icon={<Widgets />}
       />
-      <BottomNavigationAction 
+      <BottomNavigationAction
         label="Cart"
-        onClick={() =>' setState(true)'}
+        onClick={() => " setState(true)"}
         value="Cart"
-        style={{ color: `${value === "Cart" ? "#fa5d29" : "#fff"}` , minWidth: '25px'}}
+        sx={{
+          color: `${value === "Cart" ? "#fa5d29" : "secondary.main"}`,
+          minWidth: "25px",
+        }}
         icon={<ShoppingCart />}
       />
     </BottomNavigation>

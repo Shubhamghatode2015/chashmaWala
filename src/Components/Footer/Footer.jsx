@@ -51,7 +51,7 @@ export default function Footer() {
           <Box flex={2}>
             <Link to="/">
               <img
-                src={require("../../assets/images/Asset 1.png")}
+                src={require("../../assets/images/logo.png")}
                 alt="logo"
                 height={100}
               />
@@ -207,7 +207,7 @@ export default function Footer() {
                 Settings
               </Typography>
             </Link>
-            <Link to="/">
+            <Link to="/orderHistory-page">
               {" "}
               <Typography variant="body1" color="info.main">
                 My Orders

@@ -12,9 +12,9 @@ import { Button } from "@mui/material";
 import { FavoriteBorder, ShoppingCart } from "@mui/icons-material";
 import { Stack } from "@mui/material";
 import { Box } from "@mui/system";
-import { Link,  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const GlassCard = ({value, details}) => {
+const GlassCard = ({ value, details }) => {
   const navigate = useNavigate();
   return (
     <>
@@ -31,11 +31,11 @@ const GlassCard = ({value, details}) => {
         }}
       >
         <CardMedia
-        component={Link}
-        to={`/product-page/${value.id}`}
+          component={Link}
+          to={`/product-page/${value.id}`}
           sx={{ height: 90, width: "100%" }}
           image={value?.imageUrl}
-          title="green iguana"
+          title="fremkart"
         />
         <CardContent align="center">
           <Typography
@@ -43,14 +43,15 @@ const GlassCard = ({value, details}) => {
             component="div"
             sx={{ fontSize: 16, fontWeight: 600 }}
           >
-           {!details? value?.classification : value?.brandName}
+            {!details ? value?.classification : value?.brandName}
           </Typography>
           <Typography
             gutterBottom
             component="div"
             sx={{ fontSize: 16, fontWeight: 600 }}
           >
-           frameSize : {!details? value?.frameSize : value?.frameSizeUrl?.label}
+            frameSize :{" "}
+            {!details ? value?.frameSize : value?.frameSizeUrl?.label}
           </Typography>
         </CardContent>
         <CardActions align="center">
@@ -78,7 +79,7 @@ const GlassCard = ({value, details}) => {
                 borderRadius: 0,
               }}
               startIcon={<ShoppingCart />}
-              onClick={()=>navigate(`/cart-page/${value?.id}`)}
+              onClick={() => navigate(`/cart-page/${value?.id}`)}
             >
               ADD TO CART
             </Button>

@@ -387,6 +387,25 @@ const supportStym = [
     id: "Premium Eyewear ",
   },
 ];
+const categoriesArray = [
+  {
+    img: require("./assets/images/shraddha.jpg"),
+    id: "Cat Eye",
+  },
+  {
+    img: require("./assets/images/shraddha.jpg"),
+    id: "Oval",
+  },
+  {
+    img: require("./assets/images/shraddha.jpg"),
+    id: "Aviator",
+  },
+  {
+    img: require("./assets/images/shraddha.jpg"),
+    id: "Square",
+  },
+
+];
 
 const arr_imgs = [
   "https://static1.lenskart.com/media/desktop/img/Nov20/25-Nov/UpdatedBanner1912360_16thJune21.jpg",
@@ -412,4 +431,5 @@ export {
   arr_imgs,
   brandImgs,
   supportStym,
+  categoriesArray,
 };

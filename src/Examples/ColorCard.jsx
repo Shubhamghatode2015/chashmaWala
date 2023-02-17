@@ -30,7 +30,7 @@ const ColorCard = ({ value }) => {
         <CardMedia
           sx={{ height: "60%", width: "100%", pt: 3 }}
           image={value?.imageUrl && value?.imageUrl.length> 0 ? value?.imageUrl[0] : value?.imageUrl}
-          title="green iguana"
+          title="fremkart"
         />
         <CardContent align="center" sx={{ p: 0 }}>
           <Typography gutterBottom component="div" sx={{ fontSize: 11 }}>

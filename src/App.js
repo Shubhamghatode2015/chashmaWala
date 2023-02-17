@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import MobileLeft from "./Components/Drawer/MobileLeft";
 import LayOut from "./Components/LayOut/Index";
 
 import routes from "./routes";
@@ -30,6 +31,7 @@ function App() {
             {getRoutes(routes)}
             <Route path="*" element={<Navigate to="/home-page" />} />
           </Routes>
+          <MobileLeft />
         </LayOut>
       </BrowserRouter>
     </>

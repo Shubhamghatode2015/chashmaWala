@@ -12,18 +12,17 @@ import "../assets/Css/Swiper.css";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import GlassCard from "../Examples/GlassCard";
-import { Stack } from "@mui/material";
+import { Card, CardContent, Stack, Typography } from "@mui/material";
 
-export default function SwiperSlider({ data, eyeglass, rate }) {
+export default function SwiperSlider({ data, eyeglass, rate, value }) {
   return (
     <>
       <Swiper
         slidesPerView={rate ? 4 : 1}
         spaceBetween={30}
-        loop={true}
-    
-        navigation={true}
-        modules={[ Navigation]}
+        loop={rate ? false : true}
+        navigation={rate ? false : true}
+        modules={[Navigation]}
         className="mySwiper"
       >
         {data &&
@@ -55,6 +54,32 @@ export default function SwiperSlider({ data, eyeglass, rate }) {
               </SwiperSlide>
             );
           })}
+
+        {value &&
+          value.length > 0 &&
+          value.map((items) => (
+            <SwiperSlide
+              key={items.id}
+              style={{ backgroundColor: "transparent" }}
+            >
+              <Card
+                sx={{
+                  maxWidth: 150,
+                  border: "1px solid #7C6363",
+                  borderRadius: ".7rem",
+                  height: "3rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  P: 2,cursor: 'pointer'
+                }}
+              >
+                <Typography gutterBottom variant="body1" component="div">
+                  {items.time}
+                </Typography>
+              </Card>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </>
   );

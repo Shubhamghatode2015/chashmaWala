@@ -2,7 +2,7 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
-const CategoryCard = () => {
+const CategoryCard = ({ value }) => {
   return (
     <>
       <Card
@@ -16,14 +16,14 @@ const CategoryCard = () => {
       >
         <Box sx={{ height: 170, width: 270, display: "contents" }}>
           <CardMedia
-            image={'img1'}
+            image={value.img}
             sx={{ height: 100, width: 270 }}
             component="img"
           ></CardMedia>
         </Box>
         <CardContent sx={{ width: "100%" }} component="div">
           <Typography variant="h5" align="center">
-            Sunglasses{" "}
+            {value.id}
           </Typography>
         </CardContent>
       </Card>

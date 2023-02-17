@@ -12,6 +12,11 @@ import {
   InputBase,
   useMediaQuery,
   Typography,
+  Menu,
+  Fade,
+  MenuItem,
+  ListItemIcon,
+  Avatar,
 } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -27,7 +32,14 @@ import Header from "../../Examples/Header";
 
 function ResponsiveAppBar() {
   const [isSearch, setIsSearch] = React.useState("");
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   // const nav = ProductContext(ProductArray);
   // const setSearch = nav.setSearch;
   const navigate = useNavigate();
@@ -69,9 +81,9 @@ function ResponsiveAppBar() {
         position="sticky"
         sx={{ backgroundColor: "#fff", color: "#000" }}
         style={{
-          display: `${
-            location.pathname === "/register-page" ? "none" : "flex"
-          }`,
+          // display: `${
+          //   location.pathname === "/register-page" ? "none" : "flex"
+          // }`,
           transitionDuration: "800ms",
           // opacity: `${visible ? "1" : "0"}`,
           top: `${visible ? "0" : "-15%"}`,
@@ -92,7 +104,7 @@ function ResponsiveAppBar() {
                 <CardMedia
                   component="img"
                   // height="14"
-                  image={require("../../assets/images/Asset 1.png")}
+                  image={require("../../assets/images/logo.png")}
                   alt="Logo"
                   style={{ width: "100%", height: "100%" }}
                 />
@@ -182,10 +194,68 @@ function ResponsiveAppBar() {
                   flexDirection: "column",
                   alignItems: "center",
                 }}
+                id="fade-button"
+                aria-controls={open ? "fade-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
               >
                 <Person />
                 <Typography variant="subtitle2"> User</Typography>
               </IconButton>
+              <Menu
+                id="fade-menu"
+                MenuListProps={{
+                  "aria-labelledby": "fade-button",
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+              >
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/register-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Register
+                </MenuItem>
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/profile-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Profile
+                </MenuItem>
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/orderHistory-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Order Hisory
+                </MenuItem>
+                <MenuItem color="secondary" onClick={handleClose}>
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
               <IconButton
                 size="large"
                 aria-label="show 4 new mails"
@@ -195,6 +265,7 @@ function ResponsiveAppBar() {
                   flexDirection: "column",
                   alignItems: "center",
                 }}
+                onClick={() => navigate("/massage-page")}
               >
                 <Chat />
                 <Typography variant="subtitle2"> Message</Typography>
@@ -208,6 +279,7 @@ function ResponsiveAppBar() {
                   flexDirection: "column",
                   alignItems: "center",
                 }}
+                onClick={() => navigate("/orderHistory-page")}
               >
                 <Favorite />
                 <Typography variant="subtitle2"> Orders</Typography>
@@ -221,6 +293,7 @@ function ResponsiveAppBar() {
                   flexDirection: "column",
                   alignItems: "center",
                 }}
+                onClick={() => navigate("/cart-page")}
               >
                 <ShoppingCart />
                 <Typography variant="subtitle2"> My cart</Typography>

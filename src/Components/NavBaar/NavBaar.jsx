@@ -1,22 +1,34 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import { AccountCircle, ShoppingCart } from "@mui/icons-material";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { CardMedia, useMediaQuery } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Fade,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  useMediaQuery,
+} from "@mui/material";
 import { Container } from "@mui/system";
 
 export default function NavBaar() {
   const [prevScrollPos, setPrevScrollPos] = React.useState(0);
   const [visible, setVisible] = React.useState(true);
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
 
@@ -43,14 +55,7 @@ export default function NavBaar() {
       sx={{ flexGrow: 1 }}
       style={{
         display: `${
-          location.pathname === "/register-page" ||
-          location.pathname === "/home-page" ||
-          location.pathname === "/signup-page" ||
-          location.pathname === `/product-page/${id}` ||
-          location.pathname === "/verify-page" ||
-          matches
-            ? "none"
-            : "flex"
+          location.pathname === "/home-page" || matches ? "none" : "flex"
         }`,
         transitionDuration: "800ms",
         // opacity: `${visible ? "1" : "0"}`,
@@ -75,7 +80,7 @@ export default function NavBaar() {
               <Link to="/">
                 <img
                   // assets/images/Asset 2.png
-                  src={require("../../assets/images/Asset 2.png")}
+                  src={require("../../assets/images/logo.png")}
                   alt="logo"
                   style={{ height: "3rem" }}
                 />
@@ -95,26 +100,26 @@ export default function NavBaar() {
                   Home
                 </Typography>
               </Link>
-              <Link to="/">
+              <Link to="/categories-page">
                 <Typography variant="subtitle2" color="info.main">
                   {" "}
                   Category
                 </Typography>
               </Link>
-              <Link to="/">
+              <Link to="/location-page">
                 <Typography variant="subtitle2" color="info.main">
                   {" "}
                   Location
                 </Typography>
               </Link>
-              <Link to="/">
+              <Link to="/faq">
                 <Typography variant="subtitle2" color="info.main">
                   {" "}
                   FAQ
                 </Typography>
               </Link>
 
-              <Link to="/">
+              <Link to="/cart-page">
                 <IconButton
                   size="large"
                   aria-label="show 4 new mails"
@@ -123,15 +128,73 @@ export default function NavBaar() {
                   <ShoppingCart />
                 </IconButton>
               </Link>
-              <Link to="/">
-                <IconButton
-                  size="large"
-                  aria-label="show 4 new mails"
-                  color="info.main"
+
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="info.main"
+                id="fade-button"
+                aria-controls={open ? "fade-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <AccountCircle />
+              </IconButton>
+
+              <Menu
+                id="fade-menu"
+                MenuListProps={{
+                  "aria-labelledby": "fade-button",
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+              >
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/register-page");
+                    handleClose();
+                  }}
                 >
-                  <AccountCircle />
-                </IconButton>
-              </Link>
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Register
+                </MenuItem>
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/profile-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Profile
+                </MenuItem>
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/orderHistory-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Order Hisory
+                </MenuItem>
+                <MenuItem color="secondary" onClick={handleClose}>
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
             </Box>
           </Toolbar>
         </Container>

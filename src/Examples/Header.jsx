@@ -54,10 +54,10 @@ const Header = () => {
           <Button color="info" component={Link} to={"/categories-page"}>
             All categories
           </Button>
-          <Button color="info" component={Link} to={"/about-page"}>
+          <Button color="info" component={Link} to={"/contactUs-page"}>
             Contact us
           </Button>
-          <Button color="info" component={Link} to={"/contactUs-page"}>
+          <Button color="info" component={Link} to={"/about-page"}>
             About us
           </Button>
           <Button color="info" component={Link} to={"/stores-page"}>
