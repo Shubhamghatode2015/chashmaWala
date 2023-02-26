@@ -43,7 +43,9 @@ import { handleDrawerLeft } from "../../redux/Drawer/LeftDrawerSlice";
 import { LocationOn, Storefront, TouchApp } from "@mui/icons-material";
 import { useState } from "react";
 import BasicModal from "../../Components/Modal";
-import View360 from "../../Components/360 view";
+// import View360 from "../../Components/360 view";
+import { Link, useNavigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 const HomePage = () => {
   const matches = useMediaQuery("(max-width:870px)");
@@ -99,26 +101,28 @@ const HomePage = () => {
     },
     boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.2)",
     marginLeft: 0,
-    width: "100%",
+    width: "100%", height : '41px',
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
       width: "auto",
     },
   }));
   const [show, unShow] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       {!matches ? (
         <>
-          <ResponsiveAppBar />
-          <SwiperSlider data={arr_imgs} />
-          <Container>
+          <Box sx={{ mt: 3 }}>
+            <SwiperSlider data={arr_imgs} />
+          </Box>
+          <Container sx={{ mt: 3 }}>
             <Stack direction="column" spacing={4}>
               <Box>
                 <Typography variant="h5" fontWeight={700}>
                   SUNGLASSES
                 </Typography>
-                <Stack direction="row" spacing={2}>
+                <Stack direction="row" spacing={2} marginTop={3}>
                   {sunglass && sunglass.length > 0 ? (
                     sunglass.slice(0, 4).map((value) => {
                       return <GlassCard value={value?.data} key={value.id} />;
@@ -132,7 +136,7 @@ const HomePage = () => {
                 <Typography variant="h5" fontWeight={700}>
                   PRESCRIPTION FRAMES
                 </Typography>
-                <Stack direction="row" spacing={2}>
+                <Stack direction="row" spacing={2} marginTop={3}>
                   {frameglass && frameglass.length > 0 ? (
                     frameglass.slice(0, 4).map((value) => {
                       return <GlassCard value={value?.data} key={value.id} />;
@@ -146,7 +150,7 @@ const HomePage = () => {
                 <Typography variant="h5" fontWeight={700}>
                   PROTECTIVE EYEWARE
                 </Typography>
-                <Stack direction="row" spacing={2}>
+                <Stack direction="row" spacing={2} marginTop={3}>
                   {eyeglass && eyeglass.length > 0 ? (
                     eyeglass.slice(0, 4).map((value) => {
                       return <GlassCard value={value?.data} key={value.id} />;
@@ -157,37 +161,64 @@ const HomePage = () => {
                 </Stack>
               </Box>
 
-              <Button
+              {/* <Button
                 variant="outlined"
                 color="primary"
                 onClick={() => dispatch(handleDrawerLeft(true))}
               >
                 hii there
-              </Button>
+              </Button> */}
             </Stack>
           </Container>
-          <Box sx={{ mt: 2 }}>
-            <CardMedia
-              sx={{ height: 140, width: "100%" }}
-              image={require("../../assets/images/banners/banner54.webp")}
-              title="fremkart"
+          <Box sx={{ mt: 3, height: 265, width: "100%" }}> 
+            <img
+              src={require("../../assets/images/banners/3di.png")} 
+              alt=".."
+              style={{ height: "100%", width: "100%", objectFit: "Contain" }}
             />
           </Box>
           <Container>
-            <Stack spacing={4} direction="row" sx={{ mt: 5}} >
-              <Button variant="outlined" color="primary" fullWidth sx={{ '&: hover':{
-                color: 'white.main', bgcolor: 'primary.main'
-              }}}>
+            <Stack spacing={4} direction="row" sx={{ mt: 5 }}>
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                sx={{
+                  "&: hover": {
+                    color: "white.main",
+                    bgcolor: "primary.main",
+                  },
+                }}
+                onClick={() => navigate(`/filter-page/${"value._id=men"}`)}
+              >
                 Men
               </Button>
-              <Button variant="outlined" color="primary" fullWidth sx={{ '&: hover':{
-                color: 'white.main', bgcolor: 'primary.main'
-              }}}>
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                sx={{
+                  "&: hover": {
+                    color: "white.main",
+                    bgcolor: "primary.main",
+                  },
+                }}
+                onClick={() => navigate(`/filter-page/${"value._id=women"}`)}
+              >
                 Women
               </Button>
-              <Button variant="outlined" color="primary" fullWidth sx={{ '&: hover':{
-                color: 'white.main', bgcolor: 'primary.main'
-              }}}>
+              <Button
+                variant="outlined"
+                color="primary"
+                fullWidth
+                sx={{
+                  "&: hover": {
+                    color: "white.main",
+                    bgcolor: "primary.main",
+                  },
+                }}
+                onClick={() => navigate(`/filter-page/${"value._id=Children"}`)}
+              >
                 Kid
               </Button>
             </Stack>
@@ -205,10 +236,10 @@ const HomePage = () => {
               <Typography variant="h5" fontWeight={700}>
                 Our Categories
               </Typography>
-              <Stack direction="row" spacing={2}>
+              <Stack direction="row" spacing={3}>
                 {banner && banner.length > 0 ? (
                   banner.map((value) => {
-                    return <CatCard key={value.id} value={value} />;
+                    return <CatCard key={value.id} value={value}  />;
                   })
                 ) : (
                   <Loader />
@@ -218,34 +249,36 @@ const HomePage = () => {
           </Container>
           <Box
             sx={{
-              mt: 2,
+              mt: 3,
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-evenly",
+              justifyContent: "space-between",
               alignItems: "center",
-              height: "20rem",
+              gap: 3,
             }}
           >
             <Typography variant="h5" fontWeight={700}>
               Enjoy our premium brands
             </Typography>
-            <CardMedia
-              sx={{ height: 160, width: "100%" }}
-              image={require("../../assets/images/img/VC-Banner.webp")}
-              title="fremkart"
-            />
+            <Box sx={{ mt: 3, height: 265, width: "100%" }}>
+              <img
+                src={require("../../assets/images/img/VC-Banner.webp")}
+                alt=".."
+                style={{ height: "100%", width: "100%", objectFit: "Contain" }}
+              />
+            </Box>
           </Box>
           <Container>
             <Box
               sx={{
-                mt: 2,
+                mt: 3,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-evenly",
                 alignItems: "center",
               }}
             >
-              <Stack direction="row" spacing={2}>
+              <Stack direction="row" spacing={4}>
                 {brandImgs && brandImgs.length > 0 ? (
                   brandImgs.map((img, i) => (
                     <img
@@ -263,37 +296,39 @@ const HomePage = () => {
           </Container>
           <Box
             sx={{
-              mt: 2,
+              mt: 5,
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
               alignItems: "center",
-              height: "20rem",
+              gap: 3,
             }}
           >
             <Typography variant="h5" fontWeight={700}>
               Enjoy our premium brands
             </Typography>
-            <CardMedia
-              sx={{ height: 160, width: "100%" }}
-              image={require("../../assets/images/img/Updated brand banner jj .webp")}
-              title="fremkart"
-            />
+            <Box sx={{ mt: 2, height: 265, width: "100%" }}>
+              <img
+                src={require("../../assets/images/img/Updated brand banner jj .webp")}
+                alt=".."
+                style={{ height: "100%", width: "100%", objectFit: "Contain" }}
+              />
+            </Box>
           </Box>
           <Container>
             <Box
               sx={{
-                mt: 2,
+                mt: 3,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-evenly",
                 alignItems: "center",
               }}
             >
-              <Stack direction="row" spacing={2}>
+              <Stack direction="row" spacing={3}>
                 {supportStym && supportStym.length > 0 ? (
                   supportStym.map((value, i) => (
-                    <CatCard key={value.id} value={value} />
+                    <CatCard key={value.id} value={value} rate={true} />
                   ))
                 ) : (
                   <Loader />
@@ -303,7 +338,7 @@ const HomePage = () => {
           </Container>
           <Container
             sx={{
-              mt: 2,
+              mt: 3,
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
@@ -311,36 +346,35 @@ const HomePage = () => {
               height: "100%",
             }}
           >
-            <Typography variant="h5" fontWeight={700}>
-              Enjoy our premium brands
-            </Typography>
-            {/* <CardMedia
-              sx={{ height: 500, width: "100%" }}
-              image={require("../../assets/images/img/Rectangle 5189.png")}
-              title="fremkart"
-            /> */}
-            <Typography variant="h5" color="secondary" fontWeight={700} mt={5}>
-              3D tryOn
-            </Typography>
             <Box
               sx={{
-                mt: 2,
+                p: 4,
                 display: "flex",
-                flexDirection: "row",
-                // justifyContent: "space-evenly",
                 alignItems: "center",
                 justifyContent: "flex-start",
+                flexDirection: "column",
                 height: "20rem",
                 width: "100%",
                 position: "relative",
+                mb: 2,
+                border: 0.3,
+                borderColor: "info.main",
+                borderRadius: 6,
+                mt: 5,
               }}
             >
+              <Typography variant="h5" color="secondary" fontWeight={700}>
+                3D tryOn
+              </Typography>
               <Box
                 sx={{
                   textAlign: "center",
                   display: "flex",
                   flexDirection: "column",
                   gap: 2,
+                  position: "absolute",
+                  left: "5%",
+                  top: "25%",
                 }}
               >
                 <Typography variant="h6" color="initial" fontWeight={700}>
@@ -362,10 +396,10 @@ const HomePage = () => {
               <Box
                 sx={{
                   position: "absolute",
-                  width: 450,
-                  height: 450,
+                  width: 430,
+                  height: 430,
                   right: "10%",
-                  top: "-40%",
+                  top: "-35%",
                 }}
               >
                 <img
@@ -375,25 +409,41 @@ const HomePage = () => {
               </Box>
             </Box>
           </Container>
-          <CardMedia
-            sx={{ height: 160, width: "100%" }}
-            image={require("../../assets/images/img/LK-Readers-Banner.webp")}
-            title="fremkart"
-          />
+
+          <Box sx={{ mt: 2, height: 265, width: "100%" }}>
+            <img
+              src={require("../../assets/images/img/LK-Readers-Banner.png")}
+              alt=".."
+              style={{ height: "100%", width: "100%", objectFit: "Contain" }}
+            />
+          </Box>
           <Container
             sx={{
               height: "30rem",
+              mt: 3,
             }}
           >
-            <Box>
-              <Typography color="secondary" variant="h5" fontWeight={700}>
+            <Box
+              sx={{
+                mt: 3,
+              }}
+            >
+              <Typography
+                color="secondary"
+                variant="h5"
+                fontWeight={700}
+                sx={{
+                  mt: 3,
+                  mb: 3,
+                }}
+              >
                 EYGLASSES
               </Typography>
-              <SwiperSlider eyeglass={frameglass} rate={true} />
+              <SwiperSlider eyeglass={frameglass} play={true} />
             </Box>
           </Container>
           <CardMedia
-            sx={{ height: 80, width: "100%", object: "content" }}
+            sx={{ height: 80, width: "100%", object: "content", mt: 3 }}
             image={require("../../assets/images/img/callFooter.png")}
             title="fremkart"
           />
@@ -401,12 +451,6 @@ const HomePage = () => {
       ) : (
         <>
           <Box>
-            <Box sx={{ width: "100%", height: "5rem", p: 2 }}>
-              <img
-                src={require("../../assets/images/logo.png")}
-                style={{ height: "100%", width: "100%", objectFit: "contain" }}
-              />
-            </Box>
             <Box
               sx={{
                 display: "flex",
@@ -522,7 +566,7 @@ const HomePage = () => {
               </Search>
             </Box>
             {/* ...resonsive slider ......................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-            <Box sx={{ width: "100%", p: 1, height: "20rem" }}>
+            <Box sx={{ width: "100%", p: 1, height: "12rem" }}>
               <SwiperSlider data={arr_imgs} />
             </Box>
 
@@ -537,8 +581,10 @@ const HomePage = () => {
                   borderRadius: "7px",
                   display: "flex",
                   padding: "5px",
-                  height: { sm: "5vh", xs: "4vh" },
-                  alignItems: "center",
+                  height:  "4rem",
+                  alignItems: "center",'&: hover':{
+                    bgcolor: 'primary.main'
+                  }
                 }}
               >
                 <Box sx={{ width: "13%" }}>
@@ -552,51 +598,43 @@ const HomePage = () => {
                     variant="h6"
                     sx={{
                       color: "#0395AF",
-                      display: { sm: "none", xs: "block" },
+                     
                     }}
-                    fontFamily="inherit"
+                   
                   >
                     {" "}
                     Nearby Store
                   </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: "#0395AF",
-                      display: { sm: "block", xs: "none" },
-                    }}
-                    fontFamily="inherit"
-                  >
-                    {" "}
-                    Nearby Store
-                  </Typography>
+                 
                 </Box>
                 <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     width: " 14%",
-                    justifyContent: "center",
-                  }}
+                    justifyContent: "center", 
+                  }} 
                 >
-                  <TouchApp />
+                  <Link  to={ '/stores-page'} >
+                    <img src={require('../../assets/images/down-arrow.png')} style={{ widht: '25px', height: '25px'}} alt='.'  />
+                    </Link> 
                   {/* <img src={arow} width="20" alt="" /> */}
                 </Box>
               </Box>
             </Box>
             {/* .......shop more..................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-            <Box sx={{ padding: "4px" }}>
+            <Box sx={{ padding: "4px", mt: 1 }}>
               <Box
                 sx={{
                   backgroundColor: "#0395AF",
-                  width: "25%",
+                  width: "30%",
                   color: "#ffff",
                   fontSize: { xs: "14px", sm: "25px" },
                   fontWeight: "700",
                   borderRadius: "4px",
                   boxShadow: "1px 3px 3px rgba(3, 149, 175, 0.22)",
                   padding: "4px",
-                  height: { sm: "4vh" },
+                  height: '2rem',
                   marginLeft: { xs: "10px", sm: "10px" },
                   display: "flex",
                   alignItems: "center",
@@ -609,7 +647,7 @@ const HomePage = () => {
             {/* ....catergorienksdjnfkjasdfgbia.....................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
             <Box
-              sx={{
+              sx={{ mt: 3,
                 display: "flex",
                 justifyContent: "space-between",
                 padding: "10px",
@@ -630,6 +668,7 @@ const HomePage = () => {
                     color: "#ffff",
                   },
                 }}
+                onClick={() => navigate(`/filter-page/${"value._id=Children"}`)}
                 variant="outlined"
               >
                 Men
@@ -648,6 +687,7 @@ const HomePage = () => {
                     color: "#ffff",
                   },
                 }}
+                onClick={() => navigate(`/filter-page/${"value._id=Children"}`)}
                 variant="outlined"
               >
                 Women
@@ -666,6 +706,7 @@ const HomePage = () => {
                     color: "#ffff",
                   },
                 }}
+                onClick={() => navigate(`/filter-page/${"value._id=Children"}`)}
                 variant="outlined"
               >
                 Kids
@@ -674,7 +715,7 @@ const HomePage = () => {
             {/* ..cateriojhoigjnlkangk;asjdhnkjsdfb........ourCategiorewrkasduhf...............................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
             <Box
-              sx={{
+              sx={{ mt: 2,
                 display: "flex",
                 justifyContent: "space-evenly",
                 padding: 1,
@@ -682,7 +723,10 @@ const HomePage = () => {
             >
               {banner && banner.length > 0 ? (
                 banner.map((value) => {
-                  return <CatCard key={value.id} value={value} />;
+                  return  <Link to={`/filter-page/${"value._id=Children"}`}>
+                    <CatCard key={value.id} value={value} />
+                    </Link>
+                    ;
                 })
               ) : (
                 <Loader />
@@ -693,7 +737,7 @@ const HomePage = () => {
             <Box>
               <Box>
                 <Box>
-                  <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
                     <Typography
                       sx={{ color: "#0395AF", textShadow: "1px 8px 10px grey" }}
                       fontFamily="inherit"
@@ -711,26 +755,26 @@ const HomePage = () => {
                 </Box>
                 <Box
                   sx={{
-                    p: 1,
+                    p: 1, mt: 2,
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "space-around",
-                    gap: 2,
+                    gap: 3,
                     height: "100%",
                   }}
                 >
                   {categoriesArray && categoriesArray.length > 0 ? (
                     categoriesArray.map((value) => (
                       <Box
-                        sx={{
+                        sx={{ mt: 1,
                           width: "170px",
                           height: "110px",
                           textAlign: "center",
                         }}
-                        key={value.id}
+                        key={value.id} component={Link} to={`/filter-page/${"value._id=Children"}`}
                       >
                         <CardMedia
-                          sx={{ height: "96px", width: "170px" }}
+                          sx={{ height: "96px", width: "170px", borderRadius: 2 }}
                           // image={require("../../assets/images/shraddha.jpg")}
 
                           image={value.img}
@@ -739,7 +783,7 @@ const HomePage = () => {
                         <Typography
                           variant="body1"
                           color="initial"
-                          fontWeight={600}
+                          fontWeight={600} sx={{ mt: 1}}
                         >
                           {value.id}
                         </Typography>
@@ -758,17 +802,18 @@ const HomePage = () => {
                 <Box>
                   <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <Typography
-                      sx={{ color: "#0395AF", textShadow: "1px 8px 10px grey" }}
+                      sx={{ color: "#0395AF", textShadow: "1px 8px 10px grey" , mt: 2}}
                       fontFamily="inherit"
                     >
                       Brands
                     </Typography>
                   </Box>
-                  <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <Box sx={{ display: "flex", justifyContent: "center" ,borderRadius: 2 ,mt: 1 }}>
                     <img
                       src={require("../../assets/images/bland.png")}
                       width="100"
-                      alt=""
+                      alt="." 
+                     
                     />
                   </Box>
                 </Box>
@@ -777,17 +822,17 @@ const HomePage = () => {
                     padding: "10px",
                     display: "flex",
                     flexWrap: "wrap",
-                    justifyContent: "space-around",
-                    gap: "10px",
+                    justifyContent: "flex-start",alignItems: 'flex-start',
+                    gap: 4,
                   }}
                 >
                   {brandImgs.map((value, i) => (
-                    <Box key={i}>
+                    <Box key={i}  component={Link} to={`/filter-page/${"value._id=Children"}`}>
                       <CardMedia
                         sx={{
                           height: { xs: "96px", sm: "100px" },
-                          width: { xs: "170px", sm: "220px" },
-                        }}
+                          width: { xs: "170px", sm: "220px" }, borderRadius: 2
+                        }} 
                         image={value}
                         // image={require("../../assets/images/shraddha.jpg")}
                         title="fremkart"
@@ -795,11 +840,11 @@ const HomePage = () => {
                     </Box>
                   ))}
                   {brandImgs.slice(0, 2).map((value, i) => (
-                    <Box key={i}>
+                    <Box key={i}  component={Link} to={`/filter-page/${"value._id=Children"}`}>
                       <CardMedia
                         sx={{
                           height: { xs: "96px", sm: "100px" },
-                          width: { xs: "170px", sm: "220px" },
+                          width: { xs: "170px", sm: "220px" },borderRadius: 2
                         }}
                         image={value}
                         // image={require("../../assets/images/shraddha.jpg")}
@@ -813,7 +858,7 @@ const HomePage = () => {
 
             {/* .........What Makes Us Stand Apart?................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-            <Box sx={{ padding: "10px" }}>
+            <Box sx={{ padding: "10px", mt: 2 }}>
               <Box
                 sx={{
                   backgroundColor: "#0395AF",
@@ -821,36 +866,27 @@ const HomePage = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   color: "#ffff",
-                  padding: "10px",
+                  padding: 1,
                   borderRadius: "10px",
-                  height: { xs: "3vh", sm: "4vh" },
+                  height: '3rem', mt: 1
                 }}
               >
                 <Typography
                   fontFamily="inherit"
-                  variant="h5"
-                  sx={{
-                    fontWeight: "700",
-                    display: { xs: "none", sm: "block" },
-                  }}
-                >
-                  What Makes Us Stand Apart?
-                </Typography>
-                <Typography
-                  fontFamily="inherit"
                   variant="h6"
                   sx={{
-                    fontWeight: "700",
-                    display: { sm: "none", xs: "block" },
+                    fontWeight: "600",
+                   
                   }}
                 >
                   What Makes Us Stand Apart?
                 </Typography>
+               
               </Box>
             </Box>
             {/* .........What Makes Us Stand Apart?................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-            <Box sx={{ width: "100%", display: "flex" }}>
+            <Box sx={{ width: "100%", display: "flex", mt: 3 }}>
               {supportStym?.map((value, i) => (
                 <CatCard key={value.id} value={value} />
               ))}
@@ -863,7 +899,7 @@ const HomePage = () => {
                 display: "flex",
                 p: 1,
                 justifyContent: "space-around",
-                gap: 1,
+                gap: 1, mt: 3
               }}
             >
               <Box
@@ -876,7 +912,7 @@ const HomePage = () => {
                   borderRadius: 2,
                   border: "0.5px solid #232323",
                   cursor: "pointer",
-                }}
+                }}  component={Link} to={`/stores-page`}
               >
                 <Typography variant="h6" color="secondary">
                   Stores Near You
@@ -904,7 +940,7 @@ const HomePage = () => {
                   borderRadius: 2,
                   border: "0.5px solid #232323",
                   cursor: "pointer",
-                }}
+                }}  component={Link} to={`/addPrescriptions-page`}
               >
                 <Typography variant="h6" color="secondary">
                   Home Try On
@@ -937,7 +973,7 @@ Premium Eyewear
 
                 flexDirection: "column",
                 justifyContent: "space-around",
-                gap: 2,
+                gap: 2,mt: 3
               }}
             >
               <Box
@@ -945,24 +981,28 @@ Premium Eyewear
                   display: "flex",
                   flexWrap: "wrap",
                   justifyContent: "space-between",
-                  gap: 1,
+                  gap: 3,
                 }}
               >
                 {customerReviewSlideData.slice(0, 4).map((value) => (
                   <Box
                     key={value.image}
                     sx={{
-                      borderRadius: 2,
+                      borderRadius: 2,mt: 1,
                       border: "0.5px solid #232323",
-                      cursor: "pointer",
+                      cursor: "pointer",  height: { xs: "256px", },
+                      width: { xs: "180px", sm: "230px" },
+                      borderRadius: "10px", 
                     }}
                   >
                     <CardMedia
                       component="video"
                       sx={{
-                        height: { xs: "180px", sm: "100px" },
-                        width: { xs: "170px", sm: "220px" },
-                        borderRadius: "10px",
+                        height: '100%',
+                        width: '100%',
+                        // height: { xs: "180px", sm: "100px" },
+                        // width: { xs: "170px", sm: "220px" },
+                        borderRadius: "10px", objectFit: 'fill',
                       }}
                       image={value.url}
                       title="fremkart"
@@ -979,7 +1019,7 @@ Premium Eyewear
       )}
 
       <BasicModal show={show} width={"75%"} unShow={unShow}>
-        <View360 />
+        {/* <Container /> */}
       </BasicModal>
     </>
   );

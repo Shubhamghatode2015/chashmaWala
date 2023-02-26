@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleDrawerLeft } from "../../../redux/Drawer/LeftDrawerSlice";
 import {
   Call,
+  ExitToApp,
   FmdGood,
   Home,
   Info,
@@ -24,37 +25,44 @@ import {
   Phone,
   StorefrontOutlined,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const returnlist = [
   {
     id: 1,
-    icone: <LocalMall />,
+    icone: require("../../../assets/icons/Iconly/Bold/bag.png"),
     name: "My orders",
+    routes: "/orderHistory-page",
   },
   {
     id: 2,
-    icone: <Home />,
+    icone: require("../../../assets/icons/Iconly/Bold/Home.png"),
     name: "Address",
+    routes: "/",
   },
   {
     id: 3,
-    icone: <StorefrontOutlined />,
+    icone: require("../../../assets/icons/Iconly/Bold/shop.png"),
     name: "Nearby stores",
+    routes: "/stores-page",
   },
   {
     id: 4,
-    icone: <Phone />,
-    name: "Contant us",
+    icone: require("../../../assets/icons/Iconly/Bold/call.png"),
+    name: "contact us",
+    routes: "/contactUs-page",
   },
   {
     id: 5,
-    icone: <Info />,
+    icone: require("../../../assets/icons/Iconly/Bold/info1.png"),
     name: "About",
+    routes: "/about-page",
   },
   {
     id: 6,
-    icone: <Info />,
+    icone: require("../../../assets/icons/Iconly/Bold/info.png"),
     name: "Term & conditions",
+    routes: "/",
   },
 ];
 
@@ -71,31 +79,40 @@ const MobileLeft = () => {
         state={true}
         anchor="left"
         open={state}
+        
         PaperProps={{
           sx: {
             backgroundColor: "white.main",
-
+            width: "100%", minHeight: '10000',
+            pt: 5,
             color: "secondary.main",
+            // overflowX: "hidden",
+            textAlign: "center",
           },
         }}
-        sx={{ zIndex: "99999" }}
         onClose={() => dispatch(handleDrawerLeft(false))}
+        onClick={() => dispatch(handleDrawerLeft(false))}
       >
-        <Box
-          style={{
-            minWidth: 330,
-            maxWidth: "90%",
-            // padding: "1rem",
-          }}
-        >
+        <Box>
           <Box
             sx={{
               display: "flex",
               aline: "center",
               justifyContent: "flex-start",
               position: "relative",
+              width: "100%",
             }}
           >
+            <ExitToApp
+              sx={{
+                position: "absolute",
+                top: 0,
+                right: "1%",
+                transform: "scale(-1, 1)",
+                fontSize: 30,
+              }}
+              onClick={() => dispatch(handleDrawerLeft(false))}
+            />
             <Box
               sx={{
                 width: "90%",
@@ -103,63 +120,62 @@ const MobileLeft = () => {
                 backgroundColor: "#353638",
                 display: "flex",
                 aline: "center",
+                pt: 3,
+                pl: 2,
                 justifyContent: "space-between",
                 borderRadius: "0 70px 70px 0",
+
                 // position:"relative"
               }}
             >
-              <div>
+              <Box
+                sx={{ gap: 1, display: "flex", flexDirection: "column", P: 2 }}
+              >
                 <Typography
                   variant="h5"
-                  component="h2"
-                  sx={{ color: "white", fontSize: 16, p: 1 }}
+                  fontWeight={600}
+                  sx={{ color: "white.main" }}
                 >
                   Anubha Gupta
                 </Typography>
-                <Box
-                  variant="h6"
-                  component="h2"
+                <Typography
+                  variant="Body1"
                   sx={{
-                    color: "white",
-                    fontSize: 12,
-                    m: 0.1,
-                    display: "flex",
-                    alignItems: "center",
+                    color: "white.main",
                   }}
                 >
-                  <Call fontSize="small" /> +91 987456320
-                </Box>
-                <Box
-                  variant="h6"
-                  component="h6"
+                  <Call fontSize="small" sx={{ mr: 1 }} /> +91 987456320
+                </Typography>
+                <Typography
+                  variant="body1"
                   sx={{
-                    color: "white",
-                    fontSize: 12,
-                    m: 0.1,
-                    display: "flex",
-                    alignItems: "center",
+                    color: "white.main",
                   }}
                 >
-                  <FmdGood fontSize="small" /> Bhopal, 458001
-                </Box>
-              </div>
+                  <FmdGood fontSize="small" sx={{ mr: 1 }} /> Bhopal, 458001
+                </Typography>
+              </Box>
 
               <Box
                 sx={{
                   backgroundColor: "white",
-                  width: "40%",
-                  height: "4vh",
+                  width: "75%",
+                  height: "3rem",
                   position: "absolute",
                   bottom: 20,
-                  right: "38%",
+                  right: "0",
                   alignItems: "center",
                   display: "flex",
-                  p: 0.4,
-                  borderRadius: "12px 0 0 12px",
-                  fontSize: 12,
+                  justifyContent: "flex-start",
+                  pl: 1.5,
+                  borderRadius: "28px 0 0 28px",
                 }}
+                component={Link}
+                to={"/profile-page"}
               >
-                <PersonSharp sx={{ color: "var(--color-text)" }} />
+                <PersonSharp
+                  sx={{ color: "primary.main", fontSize: 35, mr:1.5 }}
+                />
                 My account
               </Box>
               <CardMedia
@@ -181,19 +197,29 @@ const MobileLeft = () => {
             </Box>
           </Box>
 
-          <List sx={{ mt: 4, gap: 2, display: 'flex', flexDirection: 'column'}}>
-            {returnlist.map((curElem) => (
+          <List
+            sx={{ mt: 3, gap: 3, display: "flex", flexDirection: "column" }}
+          >
+            {returnlist.map((curElem, index) => (
               <ListItem
-                key={curElem.id}
+                component={Link}
+                to={curElem.routes}
+                key={index}
                 disablePadding
                 sx={{
                   boxShadow: "1px 1px 4px rgba(3, 149, 175, 0.1)",
                   borderRadius: "7px",
+                  color: "secondary.main",
                 }}
+                onClick={() => dispatch(handleDrawerLeft(false))}
               >
                 <ListItemButton>
-                  <ListItemIcon sx={{ color: 'primary.main' }}>
-                    {curElem.icone}
+                  <ListItemIcon sx={{ color: "primary.main" }}>
+                    <img
+                      src={curElem.icone}
+                      style={{ width: "25px", height: "25px" }}
+                      alt={curElem.name}
+                    />
                   </ListItemIcon>
 
                   <ListItemText primary={curElem.name} />
@@ -201,7 +227,17 @@ const MobileLeft = () => {
               </ListItem>
             ))}
           </List>
-          <Button variant="contained" sx={{backgroundColor:'primary.main',width:"90%",color:"white" ,m:1}}>Logout</Button>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "primary.main",
+              width: "96%",
+              color: "white",
+              p: 1.5, mt: 2
+            }}
+          >
+            Logout
+          </Button>
         </Box>
       </Drawer>
     </>

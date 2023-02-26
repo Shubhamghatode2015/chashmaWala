@@ -4,9 +4,11 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
 import {
   AccountCircle,
+  Favorite,
   Home,
   LocalMall,
   ShoppingCart,
+  Storefront,
   Widgets,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -47,12 +49,18 @@ export default function BottomNavigationBar() {
         transitionDuration: "200ms",
         overflow: "hidden",
         bottom: `${visible ? "0px" : "-120px"}`,
-        display: `${location.pathname === "/register-page" ? "none" : "flex"}`,
+        display: `${location.pathname === "/home-page" || 
+        location.pathname === "/stores-page"||
+        location.pathname === "/orderHistory-page"||
+        location.pathname === "/wishList-page"||
+        location.pathname === "/cart-page"
+         ? "flex" : "none"}`, 
+ 
       }}
       sx={{
         width: "100%",
         bgcolor: "white.main ",
-        zIndex: "999999",
+        zIndex: "1199",
         position: "fixed",
         bottom: 0,
         borderTop: 0.5,
@@ -81,14 +89,14 @@ export default function BottomNavigationBar() {
         icon={<Home />}
       />
       <BottomNavigationAction
-        label="Profile"
-        value="Profile"
-        onClick={() => navigate("/profile-page")}
+        label="NearStores"
+        value="Near stores"
+        onClick={() => navigate("/stores-page")}
         sx={{
-          color: `${value === "Profile" ? "#fa5d29" : "secondary.main"}`,
+          color: `${value === "Near stores" ? "#fa5d29" : "secondary.main"}`,
           minWidth: "25px",
         }}
-        icon={<AccountCircle />}
+        icon={<Storefront />}
       />
       <BottomNavigationAction
         label="Order "
@@ -101,18 +109,18 @@ export default function BottomNavigationBar() {
         icon={<LocalMall />}
       />
       <BottomNavigationAction
-        label="Category"
-        value="Category"
-        onClick={() => navigate("/Categories-page")}
+        label="WishList"
+        value="Wish List"
+        onClick={() => navigate("/wishList-page")}
         sx={{
-          color: `${value === "Category" ? "#fa5d29" : "secondary.main"}`,
+          color: `${value === "Wish List" ? "#fa5d29" : "secondary.main"}`,
           minWidth: "25px",
         }}
-        icon={<Widgets />}
+        icon={<Favorite />}
       />
       <BottomNavigationAction
         label="Cart"
-        onClick={() => " setState(true)"}
+        onClick={() => navigate("/cart-page")}
         value="Cart"
         sx={{
           color: `${value === "Cart" ? "#fa5d29" : "secondary.main"}`,

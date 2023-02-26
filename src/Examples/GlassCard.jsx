@@ -4,12 +4,13 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Checkbox,
   IconButton,
   Typography,
 } from "@mui/material";
 import { Button } from "@mui/material";
 
-import { FavoriteBorder, ShoppingCart } from "@mui/icons-material";
+import { Favorite, FavoriteBorder, ShoppingCart } from "@mui/icons-material";
 import { Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,13 +22,14 @@ const GlassCard = ({ value, details }) => {
       <Card
         sx={{
           width: 270,
+          
           boxShadow: "0px 5px 4px rgba(0, 0, 0, 0.25)",
-          height: 300,
+          height: 380,
           p: 2,
           display: "flex",
           justifyContent: "space-evenly",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "center", border: 0.5, borderColor: 'gainsboro'
         }}
       >
         <CardMedia
@@ -56,9 +58,10 @@ const GlassCard = ({ value, details }) => {
         </CardContent>
         <CardActions align="center">
           <Stack direction="row" align="center">
-            <Button
+            {/* <Box
               variant="container"
               sx={{
+                height: 40, width:40,
                 color: "#fff",
                 bgcolor: "#c2c2c2",
                 "&:hover": { bgcolor: "#c2c2c2" },
@@ -66,7 +69,16 @@ const GlassCard = ({ value, details }) => {
               }}
             >
               <FavoriteBorder sx={{ color: "#000" }} />
-            </Button>
+            </Box> */}
+            <Checkbox
+              sx={{
+                bgcolor: "#c2c2c2",
+                "&:hover": { bgcolor: "#c2c2c2" },
+                borderRadius: 0,
+              }}
+              icon={<FavoriteBorder sx={{ color: "primary.main" }} />}
+              checkedIcon={<Favorite sx={{ color: "primary.main" }} />}
+            />
             <Button
               variant="container"
               sx={{

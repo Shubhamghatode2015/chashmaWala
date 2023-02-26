@@ -1,307 +1,222 @@
 import { Call, Email, LocationOn } from "@mui/icons-material";
-import { Button, TextField, Typography, Container } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Typography,
+  Container,
+  Stack,
+  makeStyles,
+  InputBase,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ContactUs = () => {
+  const styless = {
+    border: 0.2,
+    borderColor: "#2197D4",
+    borderRadius: 2,
+    p: 1,
+  };
+  const stylesss1 = {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 1,
+  };
+  const boxStyle = {
+    border: 0.2,
+    borderColor: "#2197D4",
+    borderRadius: 2,
+    p: 1,
+    boxShadow: "3px 3px 4px rgba(33, 151, 212, 0.07)",
+  };
   return (
     <>
-      <Container maxWidth="lg"  sx={{ display: 'flex', gap:6, flexDirection: 'column'}}>
-        <Container component={'div'} sx={{color: 'white.main',p: 1,mt: 3, borderRadius: 1.5,  bgcolor: 'primary.main',  width: '100%', height: '3rem', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-
-<Typography variant="h4"  fontWeight={700}>Contact us</Typography>
+      <Container
+        maxWidth="xl"
+        sx={{ display: "flex", gap: 6, flexDirection: "column" }}
+      >
+        <Container
+          maxWidth="xl"
+          component={"div"}
+          sx={{
+            color: "white.main",
+            p: 1,
+            mt: 3,
+            borderRadius: 1.5,
+            bgcolor: "primary.main",
+            width: "100%",
+            height: "3rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h4" fontWeight={700}>
+            Contact us
+          </Typography>
         </Container>
-      <Box sx={{ width: "100%", display: { md: "flex" }, marginTop: "10px" }}>
+        <Box
+          sx={{
+            display: " flex",
+            // justifyContent: "space-between",
+            flexDirection: { xs: "column", md: "row", xl: "row" },
+            gap: 4,
+            width: "100%",
+            // alighItems: "flex-start",
+          }}
+        >
           <Box
-            className="col1"
             sx={{
-              width: { md: "50%" },
-              height: { md: "100%", xs: "70%" },
               display: "flex",
-              gap: "4px",
-              padding: "6px",
+              flexDirection: { xs: "column", md: "row", xl: "row" },
+              width: "100%",
+              gap: 2,
             }}
+            flex={2.5}
           >
             <Box
+              sx={{ ...boxStyle, ...stylesss1, width: "100%", height: { xs: '230px ', md: "450px" ,  xl: "450px"} }}
+            >
+              <img
+                src={require("../../assets/icons/location.png")}
+                style={{ width: 65, height: 65 }}
+              />
+              <Typography variant="h6" color="initial" fontWeight={600}>
+                {" "}
+                Our Address
+              </Typography>
+              <Typography variant="body1" color="primary" textAlign={"center"}>
+                Dombivali (East), Mumbai.
+              </Typography>
+            </Box>
+            <Box
               sx={{
-                display: { md: "flex" },
+                flexDirection: { xs: "row", md: "column", xl: "column" },
                 width: "100%",
-                gap: "10px",
-                height: { md: "50vh", xs: "34vh" },
+                height: { xs: '100%', md: "450px" ,  xl: "450px"},
+                gap: 2,
+                justifyContent: "space-between",
+                display: "flex",
               }}
             >
               <Box
                 sx={{
-                  width: { md: "50%", xs: "100%" },
-
-                  height: { md: "100%", xs: "50%" },
-                  border: "solid #6ba9e2 1px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "20px",
-                  boxShadow: "1px 1px 3px #6ba9e2",
-                  marginBottom: "10px",
+                  ...boxStyle,
+                  ...stylesss1,
+                  width: { xs: "450px", md: "100%", xl: "100%" },
+                  height: { xs: "230px", md: "48%" , xl: "48%"  },
                 }}
               >
-                <Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        border: "dashed #6ba9e2 2px",
-                        borderRadius: "50% 50%",
-                        padding: "1px",
-                        width: { md: "30%", xs: "40%" },
-                        height: { md: "9vh", xs: "6vh" },
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <LocationOn
-                        sx={{
-                          color: "#6ba9e2",
-                          fontSize: { md: "50px", xs: "40px" },
-                        }}
-                      />
-                    </Box>
-                  </Box>
-
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      textAlign: "center",
-                      fontWeight: "600",
-                      fontSize: { md: "20px", xs: "15px" },
-                    }}
-                  >
-                    Our Address <br />{" "}
-                    <span style={{ color: "#6ba9e2" }}>
-                      Dombivali(east), Mumbai.
-                    </span>
-                  </Typography>
-                </Box>
+                <img
+                  src={require("../../assets/icons/call.png")}
+                  style={{ width: 65, height: 65 }}
+                />
+                <Typography variant="h6" color="initial" fontWeight={600}>
+                  Call Us
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  textAlign={"center"}
+                >
+                  +91 8693819715{" "}
+                </Typography>
               </Box>
               <Box
                 sx={{
-                  width: { md: "50%" },
-                  height: "96%",
-                  display: { xs: "flex", md: "block" },
-                  gap: { xs: "13px" },
+                  ...boxStyle,
+                  ...stylesss1,
+                  width: { xs: "450px", md: "100%", xl: "100%" },
+                  height: { xs: "230px", md: "48%" , xl: "48%"  },
                 }}
               >
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: { md: "100%", xs: "50%" },
-                    height: "50%",
-                    border: "solid #6ba9e2 1px",
-                    borderRadius: "20px",
-                    boxShadow: "1px 1px 3px #6ba9e2",
-                    marginBottom: "10px",
-                  }}
+                <img
+                  src={require("../../assets/icons/msg.png")}
+                  style={{ width: 60, height: 60 }}
+                />
+                <Typography variant="h6" color="initial" fontWeight={600}>
+                  Email US
+                </Typography>
+                <Typography
+                  component={Link}
+                  to={"https://framekart.booksica.in"}
+                  target={"_blank"}
+                  variant="body1"
+                  color="primary"
+                  textAlign={"center"}
                 >
-                  <Box sx={{ width: "70%" }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          border: "dashed #6ba9e2 2px",
-                          borderRadius: "50% 50%",
-                          padding: "1px",
-                          width: { md: "30%", xs: "40%" },
-                          height: { md: "9vh", xs: "6vh" },
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Call
-                          sx={{
-                            color: "#6ba9e2",
-                            fontSize: { md: "50px", xs: "40px" },
-                          }}
-                        />
-                      </Box>
-                    </Box>
-
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        textAlign: "center",
-                        fontWeight: "600",
-                        fontSize: { md: "20px", xs: "15px" },
-                      }}
-                    >
-                      Call us <br />
-                      <span style={{ color: "#6ba9e2" }}>+91 8693819715</span>
-                    </Typography>
-                  </Box>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "50%",
-                    width: { md: "100%", xs: "50%" },
-                    border: "solid #6ba9e2 1px",
-                    borderRadius: "20px",
-                    boxShadow: "1px 1px 3px #6ba9e2",
-                  }}
-                >
-                  <Box sx={{ width: "70%" }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          border: "dashed #6ba9e2 2px",
-                          borderRadius: "50% 50%",
-                          padding: "1px",
-                          width: { md: "30%", xs: "40%" },
-                          height: { md: "9vh", xs: "6vh" },
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Email
-                          sx={{
-                            color: "#6ba9e2",
-                            fontSize: { md: "50px", xs: "40px" },
-                          }}
-                        />
-                      </Box>
-                    </Box>
-
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        textAlign: "center",
-                        fontWeight: "600",
-                        fontSize: { md: "20px", xs: "15px" },
-                      }}
-                    >
-                      Email Us{" "}
-                      <span style={{ color: "#6ba9e2" }}>
-                        hippikart@gmail.com
-                      </span>
-                    </Typography>
-                  </Box>
-                </Box>
+                  https:// framekart.booksica.in
+                </Typography>
               </Box>
             </Box>
           </Box>
-          <Box
-            className="col2"
-            sx={{
-              width: { md: "50%" },
-              height: "53vh",
-              padding: "10px",
-            }}
-          >
-            <Box sx={{ display: "flex", width: "100%", flexWrap: "wrap" }}>
-              <Box sx={{ width: { md: "50%", xs: "100%" } }}>
-                <h3 style={{ margin: "0", fontWeight: "500" }}>Your Name</h3>
-
-                <TextField
-                  id="outlined-basic"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      "& > fieldset": {
-                        border: "#6ba9e2 solid 2px",
-                        borderRadius: "13px",
-                      },
-                    },
-                    width: { md: "90%", xs: "100%" },
-                  }}
+          <Box sx={{ display: "flex", flexDirection: "column" }} flex={5}>
+            <Stack direction={"column"} spacing={3}>
+              <Stack direction={"row"} spacing={3}>
+                <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+                  <Typography variant="body1" color="initial">
+                    Your Name
+                  </Typography>
+                  <InputBase
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Type Your Name"
+                    sx={{ ...styless }}
+                  />
+                </Stack>
+                <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+                  <Typography variant="body1" color="initial">
+                    Your Email
+                  </Typography>
+                  <InputBase
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Type YourEmail"
+                    sx={{ ...styless }}
+                  />
+                </Stack>
+              </Stack>
+              <Stack direction={"column"} spacing={1}>
+                <Typography variant="body1" color="initial">
+                  Subject
+                </Typography>
+                <InputBase
+                  fullWidth
                   variant="outlined"
+                  placeholder="Type Your Subject"
+                  sx={{ ...styless }}
                 />
-              </Box>
-              <Box sx={{ width: { md: "50%", xs: "100%" } }}>
-                <h3 style={{ margin: "0", fontWeight: "500" }}>Your Email</h3>
-                <TextField
-                  id="outlined-basic"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      "& > fieldset": {
-                        border: "#6ba9e2 solid 2px",
-                        borderRadius: "13px",
-                      },
-                    },
-                    width: { md: "90%", xs: "100%" },
-                  }}
+              </Stack>
+              <Stack direction={"column"} spacing={1}>
+                <Typography variant="body1" color="initial">
+                  Message
+                </Typography>
+                <InputBase
+                  fullWidth
                   variant="outlined"
+                  placeholder="Type Your Message"
+                  multiline
+                  rows={5}
+                  sx={{ ...styless }}
                 />
-                {/* <TextField id="outlined-basic" sx={{width:'90%'}}  variant="outlined" /> */}
-              </Box>
-            </Box>
-            <Box>
-              <h3 style={{ margin: "0", fontWeight: "500" }}>Subject</h3>
-              <TextField
-                id="outlined-basic"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& > fieldset": {
-                      border: "#6ba9e2 solid 2px",
-                      borderRadius: "13px",
-                    },
-                  },
-                  width: { md: "95%", xs: "100%" },
-                }}
-                variant="outlined"
-              />
-            </Box>
-            <Box
-              sx={{
-                width: "100%",
-                borderRadius: "10px",
-                "&.MuiOutlinedInput-root": {
-                  color: "#232323",
-                },
-              }}
-            >
-              <h3 style={{ margin: "0", fontWeight: "500" }}>Message</h3>
-
-              <TextField
-                id="outlined-basic"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& > fieldset": {
-                      border: "#6ba9e2 solid 2px",
-                      borderRadius: "13px",
-                    },
-                    "& > input": { height: { md: "20vh", xs: "17vh" } },
-                  },
-                  width: { md: "95%", xs: "100%" },
-                }}
-                variant="outlined"
-              />
-            </Box>
+              </Stack>
+              <Button
+                variant="contained"
+                color="primary"
+                size={"large"}
+                sx={{ width: "20%" }}
+              >
+                Submit
+              </Button>
+            </Stack>
           </Box>
         </Box>
-        <Button fullWidth variant="contained" color="primary">
-          Submit
-        </Button>
       </Container>
+      <Box sx={{ height: "10rem", width: "100%" }} />
     </>
   );
 };

@@ -17,7 +17,16 @@ const MyCoupons = () => {
             m: "1rem",
           }}
         ></Box>
-        <Typography variant="h4" color="initial">
+        <Typography variant="h4" color="initial"
+        sx={{
+                fontSize: {
+                  lg: 30,
+                  md: 22,
+                  sm: 18,
+                  xs: 15,
+                },
+              }}
+            >
           {" "}
           My Coupons
         </Typography>

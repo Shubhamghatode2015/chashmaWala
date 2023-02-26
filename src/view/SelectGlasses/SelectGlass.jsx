@@ -17,6 +17,11 @@ import Index from ".";
 // import Multistep from "../../components/Multistep";
 
 const SelectGlass = () => {
+  const styles={
+    maxHeight:"100%",
+    minHeight:650, 
+    width:450
+  };
   const [isClick, setIsClick] = useState(false);
   const steps = ["", "lens type", "eye power"];
   return (
@@ -58,9 +63,10 @@ const SelectGlass = () => {
           {/* <Multistecfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfp /> */}
 
           <Container sx={{ mt: 5 }}>
+            <Box>
             <Stack
               direction={"row"}
-              spacing={4}
+              spacing={5}
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -68,9 +74,11 @@ const SelectGlass = () => {
               }}
             >
               <Card
+              style={styles}
                 sx={{
+                
                   width: 400,
-                  height: 500,
+                  // height: 500,
                   border: "1px solid #EFF0F7",
                   display: "flex",
                   justifyContent: "center",
@@ -126,9 +134,10 @@ const SelectGlass = () => {
 
               {/* --------------------------2------------------------ */}
               <Card
+               style={styles}
                 sx={{
                   width: 400,
-                  height: 500,
+                  
                   p: 1,
                   border: "1px solid #EFF0F7",
                   display: "flex",
@@ -161,7 +170,7 @@ const SelectGlass = () => {
                     >
                       <CardMedia
                         sx={{
-                          width: "75%",
+                          width: "70%",
                           height: "5rem",
                           objectFit: "contain",
                         }}
@@ -181,7 +190,7 @@ const SelectGlass = () => {
                         ₹128
                       </Box>
 
-                      <Typography variant="body" p={"5px"}>
+                      <Typography variant="body" p={"5px"} fontWeight={600}>
                         Single Vision
                       </Typography>
                       <Typography variant="subtitle2" sx={{ fontSize: 11 }}>
@@ -212,7 +221,7 @@ const SelectGlass = () => {
                     >
                       <CardMedia
                         sx={{
-                          width: "75%",
+                          width: "70%",
                           height: "5rem",
                           objectFit: "contain",
                         }}
@@ -232,7 +241,7 @@ const SelectGlass = () => {
                       >
                         ₹128
                       </Box>
-                      <Typography variant="body1" p={"5px"}>
+                      <Typography variant="body1" p={"5px"} fontWeight={600} >
                         Progressive
                       </Typography>
                       <Typography variant="subtitle2" sx={{ fontSize: 11 }}>
@@ -264,7 +273,7 @@ const SelectGlass = () => {
                     >
                       <CardMedia
                         sx={{
-                          width: "75%",
+                          width: "70%",
                           height: "5rem",
                           objectFit: "contain",
                         }}
@@ -284,7 +293,58 @@ const SelectGlass = () => {
                         ₹128
                       </Box>
 
-                      <Typography variant="body1" p={"5px"}>
+                      <Typography variant="body1" p={"5px"} fontWeight={600} >
+                        Screen glasses
+                      </Typography>
+                      <Typography variant="subtitle2" sx={{ fontSize: 11 }}>
+                        with a single prescription across the whole lens
+                        surface, for near or distance vision correction.
+                      </Typography>
+                    </CardContent>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      borderRadius: 5,
+                      height: "8rem",
+                      "&: hover": {
+                        bgcolor: "#0395AF",
+                      },
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "8rem",
+                        width: "100%",
+                      }}
+                    >
+                      <CardMedia
+                        sx={{
+                          width: "70%",
+                          height: "5rem",
+                          objectFit: "contain",
+                        }}
+                        image={require("../../assets/images/p3.png")}
+                      />
+                    </Box>
+
+                    <CardContent sx={{ pb: 0, p: 0 }}>
+                      <Box
+                        sx={{
+                          background: "#EBE7FF",
+                          borderRadius: "0px 15px",
+                          float: "right",
+                          p: 1,
+                        }}
+                      >
+                        ₹128
+                      </Box>
+
+                      <Typography variant="body1" p={"5px"}  fontWeight={600}>
                         Screen glasses
                       </Typography>
                       <Typography variant="subtitle2" sx={{ fontSize: 11 }}>
@@ -321,9 +381,11 @@ const SelectGlass = () => {
                       Next
                     </Button>
                   </Box>
+                  
                 </Stack>
               </Card>
             </Stack>
+            </Box>
           </Container>
         </Container>
       )}

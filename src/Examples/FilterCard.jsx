@@ -2,6 +2,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Checkbox,
   IconButton,
   Rating,
   Typography,
@@ -15,6 +16,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 // import Rate from "./Rate";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 const FilterCard = ({ value, details }) => {
   // console.log(value);
   return (
@@ -29,7 +31,7 @@ const FilterCard = ({ value, details }) => {
           justifyContent: "space-evenly",
           flexDirection: "column",
           alignItems: "center",
-          border: "1px solid #E3E8EE",
+          border: 0.5, borderColor: 'gainsboro'
         }}
       >
         <Box sx={{ height: 150, width: "100%", p: 1, objectFit: "contain" }}>
@@ -43,10 +45,29 @@ const FilterCard = ({ value, details }) => {
         </Box>
 
         <CardContent
-          sx={{ width: "100%", borderTop: "1px solid #E3E8EE" }}
+          sx={{
+            width: "100%",
+            borderTop: "1px solid #E3E8EE",
+            position: "relative",
+          }}
           align={"start"}
         >
-          <Stack direction={"row"} spacing={2}>
+          <Box
+            sx={{
+              display: "inline-flex",
+              position: "absolute",
+              top: "0px",
+              right: "0px",
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}
+          >
+            <Checkbox
+              icon={<FavoriteBorder sx={{ color: "primary.main" }} />}
+              checkedIcon={<Favorite sx={{ color: "primary.main" }} />}
+            />
+          </Box>
+          <Stack direction={"row"} spacing={3}>
             <Typography gutterBottom variant="body" sx={{ fontWeight: 600 }}>
               ₹{value?.prices[1]?.price}
             </Typography>
@@ -60,16 +81,8 @@ const FilterCard = ({ value, details }) => {
             >
               ₹ {value?.prices[0]?.price}
             </Typography>
-            <Button
-              variant="outlined"
-              color="inherit"
-              size="small"
-              sx={{ borderColor: "info.main" }}
-            >
-              <FavoriteBorderIcon sx={{ color: "primary.main" }} />
-            </Button>
           </Stack>
-          <Stack direction={"row"} spacing={1}>
+          <Stack direction={"row"} spacing={0.5}>
             <Rating
               name="half-rating-read"
               defaultValue={value?.review?.rating?.ratingCount}
@@ -83,11 +96,7 @@ const FilterCard = ({ value, details }) => {
           </Stack>
 
           <Typography variant="p" sx={{ color: "info.main" }}>
-            {value?.classification} <br />
             {value?.brandName}
-            <br />
-            {value?.frameSize} <br />
-            {value?.frameSizeUrl?.label}
           </Typography>
         </CardContent>
       </Card>

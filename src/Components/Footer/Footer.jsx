@@ -107,23 +107,55 @@ export default function Footer() {
               About
             </Typography>
             <Link to="/">
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 About Us
               </Typography>
             </Link>
             <Link to="/">
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Find store
               </Typography>
             </Link>
             <Link to="/">
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Categories
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Blogs
               </Typography>
             </Link>
@@ -135,24 +167,56 @@ export default function Footer() {
 
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 About Us
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Find store
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Categories
               </Typography>
             </Link>
             <Link to="/">
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Blogs
               </Typography>
             </Link>
@@ -162,24 +226,56 @@ export default function Footer() {
               Information
             </Typography>
             <Link to="/">
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Help Center
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Money Refund
               </Typography>
             </Link>
             <Link to="/">
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Shipping
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Contact us
               </Typography>
             </Link>
@@ -191,31 +287,71 @@ export default function Footer() {
 
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Login
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Register
               </Typography>
             </Link>
             <Link to="/">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 Settings
               </Typography>
             </Link>
             <Link to="/orderHistory-page">
               {" "}
-              <Typography variant="body1" color="info.main">
+              <Typography
+                variant="body1"
+                color="info.main"
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
                 My Orders
               </Typography>
             </Link>
           </Box>
           <Box flex={1} sx={{ display: "flex", flexDirection: "column" }}>
-            <Typography variant="h6" color="secondary">
+            <Typography
+              variant="h6"
+              color="secondary"
+              sx={{
+                "&: hover": {
+                  color: "primary.main",
+                },
+              }}
+            >
               Get app
             </Typography>
 

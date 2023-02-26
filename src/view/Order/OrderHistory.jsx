@@ -55,7 +55,8 @@ const OrderHistory = () => {
             display: "flex",
             flexDirection: "column",
             mt: 2,
-            gap: 2, p: 1
+            gap: 2,
+            p: 1,
           }}
         >
           <Card
@@ -94,7 +95,8 @@ const OrderHistory = () => {
                 component="div"
                 sx={{ fontSize: 18, fontWeight: 400 }}
               >
-                Product Name Product
+                Product Name Product{" "}
+                <span style={{ fontWeight: "600" }}> ₹450</span>
               </Typography>
               <Typography
                 variant="subtitle2"
@@ -112,13 +114,21 @@ const OrderHistory = () => {
                   textAlign: "start",
                   borderRadius: 2,
                   p: 1,
+                  display: "flex",
+                  alignItems: "center",
                   "&:hover": { bgcolor: "rgba(3, 149, 175, 0.57)" },
                 }}
               >
-                <Widgets sx={{ mr: 2, fontSize: 15 }} />
-                Delivered
-                <br />
-                On Wed, 19 Oct
+                <img
+                  src={require("../../assets/images/box.png")}
+                  style={{ marginRight: "0.6rem", height: "30px" }}
+                />
+                <Typography variant="body2" color="white.main">
+                  {" "}
+                  Delivered
+                  <br />
+                  On Wed, 19 Oct
+                </Typography>
               </Box>
             </CardContent>
             <CardActions fullWidth>
@@ -144,39 +154,58 @@ const OrderHistory = () => {
 
                     "&:hover": { bgcolor: "#c2c2c2" },
                   }}
-                  startIcon={<KeyboardReturn />}
+                  startIcon={<KeyboardReturn />} component={Link} to={'/orederReturn-page'}
                 >
                   Cancel
                 </Button>
               </Stack>
             </CardActions>
           </Card>
-          <AddressCard/>
-          <Address2Card/>
-          <Box fullWidth sx={{bgcolor:'rgba(3, 149, 175, 0.11)'}} p={1}>
-     <TextField  fullWidth 
-     label='Write Review'
-     sx={{"& .MuiFilledInput-root": {
-      background: "rgba(3, 149, 175, 0.11)"
-    }}}
-     InputProps={{
-            endAdornment: <InputAdornment position="end"><Edit/></InputAdornment>,
-            // startAdornment: <InputAdornment position="start">Write Review</InputAdornment>
-            
-          }}
-          variant="standard"/>
-          <br/>
-          <Box>
-      <Box sx={{display:"flex", justifyContent:"space-between", mt:2}}>
-      <Rating name="no-value" value={null}/>
-        <Button variant="contained" sx={{bgcolor:"rgba(3, 149, 175, 1)"}}>Post</Button>
-      </Box>
-      
+          <AddressCard />
+          <Address2Card />
+          <Box   sx={{
+                    border: "1px solid rgba(35, 35, 35, 0.3)",
+                    borderRadius: 2,
+                    height: "100%",
+                  }}
+                  p={2}> 
 
+<Typography variant="body1" color="initial">Order ID # 1217298 03370800584001</Typography>
           </Box>
-
-    </Box>
-
+          <Box fullWidth sx={{ bgcolor: "rgba(3, 149, 175, 0.11)" }} p={1}>
+            <TextField
+              fullWidth
+              label="Write Review"
+              sx={{
+                "& .MuiFilledInput-root": {
+                  background: "rgba(3, 149, 175, 0.11)",
+                },
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Edit />
+                  </InputAdornment>
+                ),
+                // startAdornment: <InputAdornment position="start">Write Review</InputAdornment>
+              }}
+              variant="standard"
+            />
+            <br />
+            <Box>
+              <Box
+                sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
+              >
+                <Rating name="no-value" value={null} />
+                <Button
+                  variant="contained"
+                  sx={{ bgcolor: "rgba(3, 149, 175, 1)" }}
+                >
+                  Post
+                </Button>
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </Container>
     </>

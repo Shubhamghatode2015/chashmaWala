@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -19,9 +18,9 @@ import {
 import { Container } from "@mui/system";
 
 export default function NavBaar() {
-  const [prevScrollPos, setPrevScrollPos] = React.useState(0);
-  const [visible, setVisible] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,6 +28,7 @@ export default function NavBaar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
 
@@ -41,7 +41,7 @@ export default function NavBaar() {
     setPrevScrollPos(currentScrollPos);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -51,22 +51,14 @@ export default function NavBaar() {
   const location = useLocation();
   const { id } = useParams();
   return (
-    <Box
-      sx={{ flexGrow: 1 }}
-      style={{
-        display: `${
-          location.pathname === "/home-page" || matches ? "none" : "flex"
-        }`,
-        transitionDuration: "800ms",
-        // opacity: `${visible ? "1" : "0"}`,
-        top: `${visible ? "0" : "-15%"}`,
-      }}
-    >
+    <>
       <AppBar
-        position="sticky"
         sx={{
-          backgroundColor: "white.main",
-          color: "secondary.main",
+          backgroundColor: "#fff",
+          color: "#000",
+          position: "sticky",
+          transitionDuration: "800ms",
+          top: `${visible ? "0" : "-15%"}`,
         }}
       >
         <Container>
@@ -95,25 +87,57 @@ export default function NavBaar() {
               }}
             >
               <Link to="/">
-                <Typography variant="subtitle2" color="info.main">
+                <Typography
+                  variant="subtitle2"
+                  color="info.main"
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                >
                   {" "}
                   Home
                 </Typography>
               </Link>
               <Link to="/categories-page">
-                <Typography variant="subtitle2" color="info.main">
+                <Typography
+                  variant="subtitle2"
+                  color="info.main"
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                >
                   {" "}
                   Category
                 </Typography>
               </Link>
               <Link to="/location-page">
-                <Typography variant="subtitle2" color="info.main">
+                <Typography
+                  variant="subtitle2"
+                  color="info.main"
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                >
                   {" "}
                   Location
                 </Typography>
               </Link>
               <Link to="/faq">
-                <Typography variant="subtitle2" color="info.main">
+                <Typography
+                  variant="subtitle2"
+                  color="info.main"
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                >
                   {" "}
                   FAQ
                 </Typography>
@@ -124,6 +148,11 @@ export default function NavBaar() {
                   size="large"
                   aria-label="show 4 new mails"
                   color="info.main"
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
                 >
                   <ShoppingCart />
                 </IconButton>
@@ -138,6 +167,11 @@ export default function NavBaar() {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
+                sx={{
+                  "&: hover": {
+                    color: "primary.main",
+                  },
+                }}
               >
                 <AccountCircle />
               </IconButton>
@@ -188,6 +222,24 @@ export default function NavBaar() {
                   </ListItemIcon>
                   Order Hisory
                 </MenuItem>
+                <MenuItem color="secondary"  onClick={() => {
+                    navigate("/wishList-page");
+                    handleClose();
+                  }}>
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                 Wish List
+                </MenuItem>
+                <MenuItem color="secondary"  onClick={() => {
+                    navigate("/membersip-page");
+                    handleClose();
+                  }}>
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                Membership
+                </MenuItem>
                 <MenuItem color="secondary" onClick={handleClose}>
                   <ListItemIcon>
                     <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
@@ -199,6 +251,6 @@ export default function NavBaar() {
           </Toolbar>
         </Container>
       </AppBar>
-    </Box>
+    </>
   );
 }

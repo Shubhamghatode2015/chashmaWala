@@ -22,6 +22,8 @@ import SellerDetails from "./view/Stores/SellerDetails";
 import SelectGlass from "./view/SelectGlasses/SelectGlass";
 import BookingDetails from "./view/HomeEyeTesting";
 import UserRegister from "./view/User Pages/UserRegister";
+import Membershippage from "./view/User Pages/MemberShipPage";
+import WishList from "./view/WishLIst";
 
 
 const routes = [
@@ -60,7 +62,7 @@ const routes = [
   {
     type: "route",
     name: "Cart",
-    key: "cart Page",
+    key: "cart-Page",
     route: "/cart-page",
 
     component: <CartPage />,
@@ -219,6 +221,30 @@ component: <UserRegister />
     route: "/bookingDetails-page",
 
     component: <BookingDetails />,
+  },
+  {
+    type: "route",
+    name: "memberShip",
+    key: "membership page",
+    route: "/membersip-page",
+
+    component: <Membershippage />,
+  },
+  {
+    type: "route",
+    name: "add-memberShip",
+    key: "add-membership page",
+    route: "/membersip-page/:id",
+
+    component: '',
+  },
+  {
+    type: "route",
+    name: "WishList",
+    key: "WidhList page",
+    route: "/wishList-page",
+
+    component: <WishList />,
   },
 ];
 export default routes;

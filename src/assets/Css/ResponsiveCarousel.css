@@ -1,0 +1,10 @@
+.carousel .thumb.selected{
+    /* border: 1px solid #333; */
+    border: 1px solid rgba(0, 0, 0, 0.01);
+filter: drop-shadow(0px 4px 4px #000000);
+}
+.carousel .thumb:hover{
+    /* border: 1px solid #333; */
+    border: 2px solid rgba(0, 0, 0, 0.01);
+/* filter: drop-shadow(0px 4px 4px #000000); */
+}

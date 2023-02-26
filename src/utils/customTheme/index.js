@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material";
 export const customTheme=createTheme({
     palette:{
         primary:{
-            main:'#57A2F9'
+            main:'#0395AF'
         },
         secondary:{
             main:'#000000'
@@ -18,9 +18,13 @@ export const customTheme=createTheme({
         white:{
             main:'#ffffff'
         },
+        shubham:{
+            main: '#57A2F9'
+        }
     },
     typography:{
         fontFamily: 'Public Sans' ,
+        // fontFamily: 'Poppins', 
         h5:{
             fontSize:'25px'
         },

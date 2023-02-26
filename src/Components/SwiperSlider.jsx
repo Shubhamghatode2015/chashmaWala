@@ -14,23 +14,24 @@ import { Pagination, Navigation } from "swiper";
 import GlassCard from "../Examples/GlassCard";
 import { Card, CardContent, Stack, Typography } from "@mui/material";
 
-export default function SwiperSlider({ data, eyeglass, rate, value }) {
+export default function SwiperSlider({ play, data, eyeglass, rate, value }) {
   return (
     <>
       <Swiper
-        slidesPerView={rate ? 4 : 1}
+        slidesPerView={rate || play ? 4 : 1}
         spaceBetween={30}
         loop={rate ? false : true}
         navigation={rate ? false : true}
         modules={[Navigation]}
         className="mySwiper"
+
       >
         {data &&
           data.length > 0 &&
           data.map((img, index) => (
             <SwiperSlide key={index}>
               <div
-                style={{ height: "30rem", width: "100%", objectFit: "contain" }}
+                style={{ height: "30rem", width: "100%",  }}
               >
                 <img
                   src={img}
@@ -71,8 +72,10 @@ export default function SwiperSlider({ data, eyeglass, rate, value }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  P: 2,cursor: 'pointer'
+                  P: 2,
+                  cursor: 'pointer'
                 }}
+                style={{ padding: '0.6rem'}}
               >
                 <Typography gutterBottom variant="body1" component="div">
                   {items.time}

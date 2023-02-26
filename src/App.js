@@ -1,9 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import MobileLeft from "./Components/Drawer/MobileLeft";
 import LayOut from "./Components/LayOut/Index";
 
 import routes from "./routes";
-function App() {
+function App() { 
+
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       if (route.collapse) {
@@ -23,6 +25,10 @@ function App() {
 
       return null;
     });
+    useEffect(()=>{
+      window.scroll(0, 0);
+    },[])
+  
   return (
     <>
       <BrowserRouter>

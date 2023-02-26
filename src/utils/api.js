@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const baseURL = `${process.env.REACT_APP_API}/`
 export const http2 = `${process.env.REACT_APP_API}/`
+
 export const adminId = localStorage.getItem("id")
 const http = axios.create({
 	baseURL: baseURL,

@@ -20,6 +20,7 @@ const WishListCard = ({ value }) => {
           display: "flex",
           alignItems: "center",
           boxShadow: "0px 5px 4px rgba(0, 0, 0, 0.25)",
+          P: 1,
         }}
       >
         <Box sx={{ height: 79, width: 153, display: "contents" }}>

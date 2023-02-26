@@ -14,13 +14,26 @@ import { Link } from "react-router-dom";
 const AddPrepcriptions = () => {
   return (
     <>
-      <Container sx={{ display: "flex", gap: 3, flexDirection: "column" }}>
+      <Container sx={{ display: "flex", gap: 3, flexDirection: "column", alignItems: 'center' }}>
         <Box
           variant="contained"
           component="div"
-          sx={{ display: "flex", alignItems: "center", width: "100%" }}
+          sx={{ mt: 3,
+            display: "flex",
+            alignItems: "flex-start",
+            width: "100%",
+            justifyContent: "space-between",
+          }}
         >
-          <Box sm={12}>
+          <Box
+          
+            sx={{
+              gap: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column", width: {xs: '100%', md: '50%', xl: '100%'}
+            }}
+          >
             <Typography variant="body1" fontWeight={600}>
               Now at just ₹99
             </Typography>
@@ -37,35 +50,22 @@ const AddPrepcriptions = () => {
               />
             </Hidden>
 
-            <Typography sx={{ fontSize: "3rem" }} variant="h1" component="h1">
+            <Typography variant="h3" fontWeight={700}>
               Get your eye <br />
               checked at home
             </Typography>
-            <Typography
-              sx={{ fontSize: "1.5rem", color: "#A7A7A7", p: 1 }}
-              variant="h5"
-              component="h5"
-            >
+            <Typography sx={{ color: "info.main", p: 1 }} variant="body1">
               Note : we are check only this cities only
             </Typography>
-            <Typography
-              sx={{
-                fontSize: "1.2rem",
-                color: "#A7A7A7",
-                p: 1,
-                textAlign: "left",
-              }}
-              variant="h5"
-              component="h5"
-            >
+            <Typography sx={{ color: "info.main", p: 1 }} variant="body1">
               Delhi NCR, Bangalore, Mumbai, Kolkata, Hyderabad, Pune, Ahmedabad,
               Durgapur, Mysore, Coimbatore, Hubli, Pondicherry, Visakhapatnam,
               Chennai, Patna, Madurai.
             </Typography>
-            <Hidden only={["xs", "sm"]}>
+            
               <Button
                 sx={{
-                  width: "90%",
+                  width: "90%",mb: 5,
                 }}
                 component={Link}
                 to={"/bookingDetails-page"}
@@ -74,10 +74,8 @@ const AddPrepcriptions = () => {
               >
                 Book Appointment
               </Button>
-            </Hidden>
-
-            <Hidden only={["md", "lg"]}>
-              <Button
+            
+              {/* <Button
                 sx={{
                   width: "90%",
                 }}
@@ -87,21 +85,22 @@ const AddPrepcriptions = () => {
                 color="primary"
               >
                 Continue
-              </Button>
-            </Hidden>
+              </Button> */}
+          
           </Box>
-          <Hidden
-            only={["xs", "sm"]}
-            variant="contained"
-            component="div"
-            sx={{ width: "50%" }}
+          <Box
+            sx={{
+              width: "45%",
+              height: "100%",
+              display: { sm: "none", xs: "none", md: "flex", xl: "flex" },
+            }}
           >
             <img
-              style={{ width: "100%" }}
+              style={{ width: "100%", height: "100%" }}
               src={require("../../assets/images/image 2402.png")}
               alt={"logo"}
             />
-          </Hidden>
+          </Box>
         </Box>
         <Hidden only={["xs", "sm"]}>
           <Box
@@ -132,7 +131,11 @@ const AddPrepcriptions = () => {
                   m: 1,
                   width: "50%",
                   color: "white",
-                  backgroundColor: "white",
+                  "& .MuiOutlinedInput-root": {
+                    bgcolor: "white.main",
+                    color: "secondary.main",
+                    borderRadius: "12px",
+                  },
                 }}
                 placeholder="Enter you number"
                 type="number"

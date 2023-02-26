@@ -1,3 +1,5 @@
+import { Close, Done } from "@mui/icons-material";
+
 const iconSlideData = [
   {
     id: 1,
@@ -404,21 +406,45 @@ const categoriesArray = [
     img: require("./assets/images/shraddha.jpg"),
     id: "Square",
   },
-
 ];
 
 const arr_imgs = [
-  "https://static1.lenskart.com/media/desktop/img/Nov20/25-Nov/UpdatedBanner1912360_16thJune21.jpg",
-  "https://static1.lenskart.com/media/desktop/img/Monsoonweb.jpg",
-  "https://static1.lenskart.com/media/desktop/img/Mar21/FlexAppeal_Desktop_12thMay21.png",
-  "https://static1.lenskart.com/media/desktop/img/Nov20/25-Nov/14thMay_Eyeglasses_DesktopBanner_17thMay21.jpg",
+  require("./assets/images/banners/b1.png"),
+  require("./assets/images/banners/b2.png"),
+  require("./assets/images/banners/b3.png"),
+  require("./assets/images/banners/b5.webp"),
+  require("./assets/images/banners/b10.jpg"),
+  require("./assets/images/banners/b11.jpg"),
 ];
 const brandImgs = [
-   require('./assets/images/img/g1.png'),
-   require('./assets/images/img/g3.png'),
-   require('./assets/images/img/g4.png'),
-   require('./assets/images/img/g5.png'),
-   require('./assets/images/img/g6.png'),
+  require("./assets/images/img/g1.png"),
+  require("./assets/images/img/g3.png"),
+  require("./assets/images/img/g4.png"),
+  require("./assets/images/img/g5.png"),
+  require("./assets/images/img/g6.png"),
+];
+
+const tableData = [
+  {
+    text1: "key Benefit",
+    text2: "Buy 1 ANG Get 1 on all Eyeglass",
+    text3: "Buy 1 ANG Get 1 on all Eyeglass",
+  },
+  {
+    text1: "Applicable on",
+    text2: "UPTO $2500",
+    text3: "UPTO $50000",
+  },
+  {
+    text1: "Contact less Benefits",
+    text2: "5%",
+    text3: "10%",
+  },
+  {
+    text1: "Applicable on progressive",
+    text2: <Close sx={{ color: "red" }} />,
+    text3: <Done sx={{ color: "#060047" }} />,
+  },
 ];
 export {
   iconSlideData,
@@ -432,4 +458,5 @@ export {
   brandImgs,
   supportStym,
   categoriesArray,
+  tableData,
 };

@@ -52,7 +52,7 @@ const LocationAccordian = ({ value }) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <CalendarMonthOutlinedIcon />
+                      <CalendarMonthOutlinedIcon  sx={{ ml: 3}}/>
                     </InputAdornment>
                   ),
                 }}
@@ -75,7 +75,7 @@ const LocationAccordian = ({ value }) => {
       />
 
       <Accordions
-        rate={true}
+         rate={true}
         name={
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <FmdGoodOutlined sx={{ mr: 2, color: "white.main" }} />

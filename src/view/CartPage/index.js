@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartCard from "../../Examples/CartCard";
+import ResponsiveCartCard from "../../Examples/ResponsiveCartCard";
+import WishCard from "../../Examples/WishCard";
 import { fatchFrameglasses } from "../../redux/festures/framekartSlice";
 
 const CartPage = () => {
@@ -31,12 +33,12 @@ const CartPage = () => {
         <Container
           sx={{
             ...commonStyles,
-            display: "flex",
+            display: { xs: "none", md: "flex", xl: "flex" },
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <Typography variant="h6" sx={{ color: "white.main" }} flex={4}>
+          <Typography variant="h6" sx={{ color: "white.main" }} flex={3}>
             Items
           </Typography>
           <Typography variant="h6" sx={{ color: "white.main" }} flex={1}>
@@ -46,24 +48,41 @@ const CartPage = () => {
             Subtotal
           </Typography>
         </Container>
-        <Container>
 
-          {
-            frameglass && frameglass.length> 0 && 
-            frameglass.slice(0 ,3 ).map((value, index)=>(
-              <CartCard value={value} key={index} />
-
-            ))
-          }
-        
+        <Container
+          sx={{
+            display: { xs: "flex", md: "none", xl: "none" },
+            justifyContent: "flex-start",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 1,
+          mt: 5, mb: 5, 
+          }}
+        >
+       
+          {frameglass &&
+            frameglass.length > 0 &&
+            frameglass.map((value, index) => (
+              <Box sx={{ height: 250, width: 185}}>
+              <WishCard value={value?.data} key={value.id} rate={true} />
+            </Box>
+            ))}{" "}
+        </Container>
+        <Container sx={{ display: { xs: "none", md: "block", xl: "block" } }}>
+          {frameglass &&
+            frameglass.length > 0 &&
+            frameglass
+              .slice(0, 3)
+              .map((value, index) => (
+                <CartCard value={value?.data} key={index} />
+              ))}
 
           <Box
             sx={{
-              display: "flex",
+              display: { xs: "none", md: "flex", xl: "flex" },
               justifyContent: "space-between",
               alignItems: "flex-start",
               mt: 5,
-             
             }}
           >
             <Box
@@ -72,6 +91,7 @@ const CartPage = () => {
                 flexDirection: "column",
                 justifyContent: "space-evenly",
                 alignItems: "flex-start",
+                gap: 1.2,
               }}
             >
               <Typography variant="h6" fontWeight={700} color="initial">
@@ -80,10 +100,10 @@ const CartPage = () => {
               <InputBase
                 placeholder="Coupon Code..."
                 sx={{
-                  outlineColor: "primary.main",
+                  outlineColor: "secondary.main",
                   outline: 1,
                   border: 1,
-                  borderColor: "primary.main",
+                  borderColor: "secondary.main",
                   pl: 1,
                   m: "0.3rem 0",
                 }}
@@ -101,15 +121,16 @@ const CartPage = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-evenly",
-                alignItems: "flex-start",
-                width: "30%",
+                alignItems: "flex-end",
+                width: "40%",
+                gap: 1.2,
                 p: 1,
               }}
             >
               <Box
                 sx={{
                   display: "flex",
-                  width: "100%",
+                  width: "75%",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
                 }}
@@ -124,7 +145,7 @@ const CartPage = () => {
               <Box
                 sx={{
                   display: "flex",
-                  width: "100%",
+                  width: "75%",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
                 }}
@@ -139,7 +160,7 @@ const CartPage = () => {
               <Box
                 sx={{
                   display: "flex",
-                  width: "100%",
+                  width: "75%",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
                 }}
@@ -154,7 +175,7 @@ const CartPage = () => {
               <Box
                 sx={{
                   display: "flex",
-                  width: "100%",
+                  width: "75%",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
                 }}
@@ -169,15 +190,31 @@ const CartPage = () => {
 
               <Button
                 variant="outlined"
-                color="primary"
-                sx={{ m: "0.3rem 0" }}
+                color="secondary"
+                sx={{
+                  m: "0.3rem 0",
+                  borderRadius: 5,
+                  borderColor: "secondary.main",
+                }}
                 onClick={() => navigate("/checkout-page")}
               >
-                <Typography variant="subtitle" sx={{ color: "primary.main" }}>
+                <Typography
+                  variant="subtitle"
+                  sx={{ color: "primary.main", fontWeight: "700" }}
+                >
                   Checkout
                 </Typography>
               </Button>
             </Box>
+          </Box>
+          <Box
+            sx={{
+              height: "20rem",
+              width: "100%",
+              display: { xs: "none", md: "block", xl: "block" },
+            }}
+          >
+            {/* empty div for more space in page to footer */}
           </Box>
         </Container>
       </Box>

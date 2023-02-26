@@ -74,7 +74,9 @@ function ResponsiveAppBar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   });
-
+  const style = {
+    borderColor: "#0395AF",
+  };
   return (
     <>
       <AppBar
@@ -112,28 +114,29 @@ function ResponsiveAppBar() {
             </Box>
 
             <Box
+              borderColor="primary.main"
               sx={{
                 width: "62%",
-                transitionDuration: "500ms",
                 height: "2.5rem",
                 marginLeft: { xs: "0", md: "5rem" },
                 marginRight: { xs: "0", md: "5rem" },
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-
                 color: "#000",
-
-                borderRadius: "12px",
+                border: 3,
+                // borderColor: "shubham",
+                borderRadius: "10px",
               }}
+              style={{ ...style }}
             >
               <InputBase
                 sx={{
                   width: "75%",
                   pl: 4,
-                  height: "2.5rem",
-                  borderRadius: "12px  0 0 12px",
-                  border: "1px solid #0395AF",
+                  height: "100%",
+                  borderRight: 1,
+                  borderColor: "primary.main",
                 }}
                 style={{
                   color: "#000",
@@ -145,7 +148,13 @@ function ResponsiveAppBar() {
                 onChange={(e) => setIsSearch(e.target.value)}
                 onKeyDown={handleKeyDown}
               />
-              <Box sx={{ display: "flex", width: "25%" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "25%",
+                  justifyContent: "space-between",
+                }}
+              >
                 <Button
                   variant="outlined"
                   size="small"
@@ -154,6 +163,14 @@ function ResponsiveAppBar() {
                     fontSize: "0.7rem",
                     p: "0.1rem 0.3rem",
                     width: "70%",
+                    border: 0,
+                    borderRadius: 0,
+                    color: "secondary.main",
+                    "&: hover": {
+                      border: 0,
+                      borderRadius: 0,
+                      color: "secondary.main",
+                    },
                   }}
                   endIcon={<KeyboardArrowDown />}
                 >
@@ -163,15 +180,18 @@ function ResponsiveAppBar() {
                 <Button
                   variant="contained"
                   size="small"
-                  color="primary"
                   sx={{
-                    bgcolor: "primary",
+                    borderLeft: "none",
+                    borderRadius: "0 10px 10px 0",
+                    bgcolor: "primary.main",
                     height: "2.5rem",
                     fontSize: "0.7rem",
                     width: "30%",
                     p: "0.1rem 0.6rem",
+                    color: "white.main",
                     "&:hover": {
-                      bgcolor: "primary",
+                      bgcolor: "primary.main",
+                      color: "white.main",
                     },
                   }}
                 >
@@ -193,6 +213,9 @@ function ResponsiveAppBar() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  "&: hover": {
+                    color: "primary.main",
+                  },
                 }}
                 id="fade-button"
                 aria-controls={open ? "fade-menu" : undefined}
@@ -219,6 +242,11 @@ function ResponsiveAppBar() {
                     navigate("/register-page");
                     handleClose();
                   }}
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
                 >
                   <ListItemIcon>
                     <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
@@ -230,6 +258,11 @@ function ResponsiveAppBar() {
                   onClick={() => {
                     navigate("/profile-page");
                     handleClose();
+                  }}
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
                   }}
                 >
                   <ListItemIcon>
@@ -243,13 +276,50 @@ function ResponsiveAppBar() {
                     navigate("/orderHistory-page");
                     handleClose();
                   }}
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
                 >
                   <ListItemIcon>
                     <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
                   </ListItemIcon>
                   Order Hisory
                 </MenuItem>
-                <MenuItem color="secondary" onClick={handleClose}>
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/wishList-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Wish List
+                </MenuItem>
+                <MenuItem
+                  color="secondary"
+                  onClick={() => {
+                    navigate("/membersip-page");
+                    handleClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
+                  </ListItemIcon>
+                  Membership
+                </MenuItem>
+                <MenuItem
+                  color="secondary"
+                  onClick={handleClose}
+                  sx={{
+                    "&: hover": {
+                      color: "primary.main",
+                    },
+                  }}
+                >
                   <ListItemIcon>
                     <Avatar sx={{ width: 30, height: 30, mr: 1 }} />
                   </ListItemIcon>
@@ -264,6 +334,9 @@ function ResponsiveAppBar() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  "&: hover": {
+                    color: "primary.main",
+                  },
                 }}
                 onClick={() => navigate("/massage-page")}
               >
@@ -278,6 +351,9 @@ function ResponsiveAppBar() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  "&: hover": {
+                    color: "primary.main",
+                  },
                 }}
                 onClick={() => navigate("/orderHistory-page")}
               >
@@ -292,6 +368,9 @@ function ResponsiveAppBar() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  "&: hover": {
+                    color: "primary.main",
+                  },
                 }}
                 onClick={() => navigate("/cart-page")}
               >

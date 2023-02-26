@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Avatar, Container, Typography } from "@mui/material";
+import {
+  Avatar,
+  Container,
+  FormControlLabel,
+  FormGroup,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import logo from "../../assets/images/banners/image 2411.png";
 import Checkbox from "@mui/material/Checkbox";
@@ -18,43 +24,48 @@ const OrederReturn = () => {
           justifyContent: "center",
           width: "100%",
           height: 300,
+          mt: 3,
         }}
       >
-        <img src={logo} alt='.' />
+        <img src={logo} alt="." />
       </Box>
-      <Container >
+      <Container>
         <Typography
           variant="h5"
           component="h3"
-          sx={{ display: "flex", fontSize: 20, pl: 2 }}
+          sx={{ display: "flex", fontSize: 20,  }}
         >
           Choose a reason for returning this order
         </Typography>
-        <Typography variant="h6" component="h5" sx={{ fontSize: 16 }}>
-          <Checkbox {...label} Checked color="info" />I got it somewhere else
-          more cheaper.
-        </Typography>
-        <Typography variant="h6" component="h5" sx={{ fontSize: 16 }}>
-          <Checkbox {...label} Checked />
-          Dosen’t fits me.
-        </Typography>
-        <Typography variant="h6" component="h5" sx={{ fontSize: 16 }}>
-          <Checkbox {...label} Checked color="primary" />
-          Not same as shown.
-        </Typography>
-        <Typography variant="h6" component="h5" sx={{ fontSize: 16 }}>
-          <Checkbox {...label} Checked color="primary" />
-          Got a wrong product.
-        </Typography>
-        <Typography sx={{ display: "flex", p: 2 }}>
-          <Button
-            sx={{ backgroundColor: "var(--color-text)" }}
-            variant="contained"
-          >
-            Submit
-          </Button>
-        </Typography>
-      </Container>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox color="info" />}
+            label="got it somewhere else
+          more cheaper."
+          />
+          <FormControlLabel
+            control={<Checkbox color="primary" />}
+            label=" Dosen’t fits me."
+          />
+
+          <FormControlLabel
+            control={<Checkbox color="primary" />}
+            label="Not same as shown."
+          />
+
+          <FormControlLabel
+            control={<Checkbox color="primary" />}
+            label="  Got a wrong product.
+      "
+          />
+        </FormGroup>
+     
+
+        <Button color="primary" variant="contained">
+          Submit
+        </Button>
+      </Container> 
+      <Box height={'10rem'} ></Box>
     </>
   );
 };

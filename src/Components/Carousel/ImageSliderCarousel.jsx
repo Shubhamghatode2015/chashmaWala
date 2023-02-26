@@ -1,5 +1,6 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import '../../assets/Css/ResponsiveCarousel.css'
 import { Carousel } from "react-responsive-carousel";
 import Loader from "../Loader";
 import { useMediaQuery } from "@mui/material";

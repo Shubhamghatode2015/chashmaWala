@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const Accordions = ({ name, details, rate }) => {
+const Accordions = ({ name, details, rate , styless, padding}) => {
   const matches = useMediaQuery("max-width: 870px");
   return (
     <>
@@ -19,7 +19,7 @@ const Accordions = ({ name, details, rate }) => {
         }}
       >
         <AccordionSummary
-          sx={{
+          sx={{ 
             backgroundColor: `${rate ? "primary.main" : "white.main"}`,
             borderRadius: `${rate ? "0.3rem" : "0px"}`,
           }}
@@ -27,13 +27,13 @@ const Accordions = ({ name, details, rate }) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography variant="body1" color="initial">
+         
             {name}
-          </Typography>
+   
           {/* <Typography >{name}</Typography> */}
         </AccordionSummary>
         <AccordionDetails
-          sx={{ backgroundColor: `${rate ? "#BEE9EA" : "white.main"}` }}
+          sx={{ backgroundColor:  "white.main", p: padding, }}
         >
           {details}
         </AccordionDetails>

@@ -1,4 +1,3 @@
-import { TaskAlt, TaskAltOutlined } from "@mui/icons-material";
 import {
   Step,
   StepLabel,
@@ -71,19 +70,11 @@ const Index = () => {
             </Box>
 
             <Stack direction={"row"} spacing={3}>
-              <SlectGlassCard />
-              <SlectGlassCard />
-              <SlectGlassCard />
+              <SlectGlassCard setIsClick={setIsClick} />
+              <SlectGlassCard setIsClick={setIsClick} />
+              <SlectGlassCard setIsClick={setIsClick} />
             </Stack>
           </Box>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setIsClick(true)}
-          >
-            {" "}
-            hiii there
-          </Button>
         </Container>
       ) : (
         <Container>
@@ -119,15 +110,19 @@ const Index = () => {
             >
               <Box
                 sx={{
-                  width: 300,
-                  height: 400,
+                  width: 220,
+                  p: 1,
+                  gap: 1,
+                  height: "15rem",
                   display: "flex",
                   justifyContent: "center",
+                  textAlign: "center",
                   alignItems: "center",
                   border: " 1px solid #928080",
                   flexDirection: "column",
-                  borderRadius: 10,
-                  textAlign: "center",
+                  borderRadius: 5,
+                  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                  cursor: "pointer",
                   "&: hover": {
                     boxShadow:
                       "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
@@ -135,11 +130,11 @@ const Index = () => {
                 }}
               >
                 <img
-                  src={require("../../assets/images/shraddha.jpg")}
-                  style={{ width: 200 }}
+                  src={require("../../assets/images/chashma.jpg")}
+                  style={{ width: "100%", height: 120, objectFit: "contain" }}
                 />
 
-                <Typography variant="h6" mt={1}>
+                <Typography variant="body1" fontWight={600} mt={1}>
                   vincent Chase Polaried
                 </Typography>
               </Box>
@@ -148,12 +143,13 @@ const Index = () => {
                   {/* <Multi4 /> */}{" "}
                   <Box
                     sx={{
-                      width: 200,
+                      width: 210,
                       p: 1,
                       gap: 1,
-                      height: "10rem",
+                      height: "13rem",
                       display: "flex",
                       justifyContent: "center",
+                      textAlign: "center",
                       alignItems: "center",
                       border: " 1px solid #928080",
                       flexDirection: "column",
@@ -184,12 +180,13 @@ const Index = () => {
                   {/* <Multi4 /> */}{" "}
                   <Box
                     sx={{
-                      width: 200,
+                      width: 210,
                       p: 1,
                       gap: 1,
-                      height: "10rem",
+                      height: "13rem",
                       display: "flex",
                       justifyContent: "center",
+                      textAlign: "center",
                       alignItems: "center",
                       border: " 1px solid #928080",
                       flexDirection: "column",
@@ -222,12 +219,13 @@ const Index = () => {
                   {/* <Multi4 /> */}
                   <Box
                     sx={{
-                      width: 200,
+                      width: 210,
                       p: 1,
                       gap: 1,
-                      height: "10rem",
+                      height: "13rem",
                       display: "flex",
                       justifyContent: "center",
+                      textAlign: "center",
                       alignItems: "center",
                       border: " 1px solid #928080",
                       flexDirection: "column",
@@ -258,12 +256,13 @@ const Index = () => {
                   {/* <Multi4 /> */}
                   <Box
                     sx={{
-                      width: 200,
+                      width: 210,
                       p: 1,
                       gap: 1,
-                      height: "10rem",
+                      height: "13rem",
                       display: "flex",
                       justifyContent: "center",
+                      textAlign: "center",
                       alignItems: "center",
                       border: " 1px solid #928080",
                       flexDirection: "column",
@@ -297,8 +296,20 @@ const Index = () => {
                     label="Power can be submitted within 10 days of order placement"
                     control={
                       <Checkbox
-                        icon={<TaskAltOutlined />}
-                        checkedIcon={<TaskAlt />}
+                        icon={
+                          <img
+                            src={require("../../assets/images/done.png")}
+                            alt="."
+                            style={{ width: 25, height: 25 }}
+                          />
+                        }
+                        checkedIcon={
+                          <img
+                            src={require("../../assets/images/unDone.png")}
+                            alt="."
+                            style={{ width: 25, height: 25 }}
+                          />
+                        }
                       />
                     }
                   />
@@ -306,8 +317,20 @@ const Index = () => {
                     label="No additional charges for high /complex power"
                     control={
                       <Checkbox
-                        icon={<TaskAltOutlined />}
-                        checkedIcon={<TaskAlt />}
+                        icon={
+                          <img
+                            src={require("../../assets/images/done.png")}
+                            alt="."
+                            style={{ width: 25, height: 25 }}
+                          />
+                        }
+                        checkedIcon={
+                          <img
+                            src={require("../../assets/images/unDone.png")}
+                            alt="."
+                            style={{ width: 25, height: 25 }}
+                          />
+                        }
                       />
                     }
                   />
@@ -321,18 +344,39 @@ const Index = () => {
                 sx={{
                   color: "#0395AF",
                   textDecoration: "underline",
-                  marginLeft: 15,
+                  marginLeft: 10,
                 }}
                 control={
                   <Checkbox
-                    icon={<TaskAltOutlined />}
-                    checkedIcon={<TaskAlt />}
+                    icon={
+                      <img
+                        src={require("../../assets/images/done.png")}
+                        alt="."
+                        style={{ width: 30, height: 30 }}
+                      />
+                    }
+                    checkedIcon={
+                      <img
+                        src={require("../../assets/images/unDone.png")}
+                        alt="."
+                        style={{ width: 30, height: 30 }}
+                      />
+                    }
                   />
                 }
               />
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box
+                sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
+              >
                 <Typography variant="subtitle1">
-                  SubTotal (Frame + Lens) :- $789
+                  <strong> SubTotal </strong> (Frame + Lens) :-
+                  <Typography
+                    component="span"
+                    sx={{ color: "primary.main", fontWeight: "700" }}
+                  >
+                    {" "}
+                    $789
+                  </Typography>
                 </Typography>
                 <Button
                   component={Link}

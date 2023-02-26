@@ -7,6 +7,7 @@ import {
   TextField,
   IconButton,
   useMediaQuery,
+  InputBase,
 } from "@mui/material";
 import { Box, Container, Stack } from "@mui/system";
 import React, { useEffect, useRef, useState } from "react";
@@ -82,12 +83,20 @@ const ProfilePage = () => {
 
     // toast.error("Please Provide at least one field to update profile");
   };
+
+  const styless = {
+    border: 0.2,
+    borderColor: "#2197D4",
+    borderRadius: 2,
+    p: 1,
+  };
   return (
     <>
       <Box
         sx={{
           bgcolor: "#EFF2F4",
           pb: 3,
+          display: { xs: "none", md: "block", xl: "block" },
         }}
       >
         <Paper
@@ -269,7 +278,11 @@ const ProfilePage = () => {
             </Box>
           </Box>
 
-          <Stack direction={"row"} spacing={5} sx={{ mt: 1 }}>
+          <Stack
+            direction={{ xs: "column", md: "row", xl: "row" }}
+            spacing={5}
+            sx={{ mt: 1 }}
+          >
             <Box sx={{ display: "flex" }}>
               <Avatar
                 alt="Shraddha Kapoor"
@@ -304,7 +317,7 @@ const ProfilePage = () => {
             <Button
               variant="outlined"
               color="info"
-              onClick={() => dispatch(handleDrawerLeft(true))}
+              // onClick={() => dispatch(handleDrawerLeft(true))}
             >
               LogOut
             </Button>
@@ -314,6 +327,7 @@ const ProfilePage = () => {
           sx={{
             mt: 5,
             display: "flex",
+            width: "100%",
             flexDirection: { xs: "column", md: "row", xl: "row" },
             justifyContnet: "space-between",
             alignItems: "flex-start",
@@ -324,11 +338,12 @@ const ProfilePage = () => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "flex-end",
+              alignItems: "flex-start",
               gap: 2,
               bgcolor: "white",
               height: "auto",
-              p: 4,
+              width: { xs: "100%", md: "48%", xl: "48%" },
+              p: 2,
               borderBottom: "4px solid #ccc",
               borderRadius: "6px",
               transition: " all .5s",
@@ -340,7 +355,15 @@ const ProfilePage = () => {
             <Typography variant="h4" color="initial" fontWeight={700}>
               PURCHASE HISTORY
             </Typography>
-            <Stack spacing={2} direction={"column"}>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
+                width: "100%",
+              }}
+            >
               {frameglass &&
                 frameglass.length > 0 &&
                 frameglass
@@ -348,7 +371,7 @@ const ProfilePage = () => {
                   .map((value, index) => (
                     <PurchaseCard value={value.data} key={index} />
                   ))}
-            </Stack>
+            </Box>
           </Box>
 
           <Box
@@ -357,21 +380,29 @@ const ProfilePage = () => {
               flexDirection: "column",
               alignItems: "flex-start",
               gap: 2,
-              p: 4,
+              bgcolor: "white",
+              height: "auto",
+              width: { xs: "100%", md: "48%", xl: "48%" },
+              p: 2,
               borderBottom: "4px solid #ccc",
               borderRadius: "6px",
               transition: " all .5s",
               "&: hover": {
                 borderColor: "#ff99ff",
               },
-              height: "auto",
-              bgcolor: "white",
             }}
           >
             <Typography variant="h4" color="initial" fontWeight={700}>
               WISHLIST
             </Typography>
-            <Stack spacing={2} direction={"column"}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
+                width: "100%",
+              }}
+            >
               {frameglass &&
                 frameglass.length > 0 &&
                 frameglass
@@ -379,10 +410,115 @@ const ProfilePage = () => {
                   .map((value, index) => (
                     <WishListCard value={value.data} key={index} />
                   ))}
-            </Stack>
+            </Box>
           </Box>
         </Container>
       </Box>
+      {/*  mobile view........................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+      <Box
+        sx={{
+          bgcolor: "#EFF2F4",
+          width: "100%",
+          display: { xs: "flex", md: "none", xl: "none" },
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          flexDirection: "column",
+          gap: 2.2,
+          p: 2,
+        }}
+      >
+        <Box
+          sx={{
+            width: 250,
+            height: 250,
+            borderRadius: "50%",
+            boxShadow: " rgb(38, 57, 77) 0px 20px 30px -10px",
+            mb: 2,
+            mt: 2,
+            border: "5px solid white",
+            transition: "all .5s",
+            "&: hover": {
+              transform: "scale(1.05) rotate(2deg)",
+            },
+          }}
+        >
+          <img
+            src={shraddha}
+            alt="sharadha"
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
+        <Stack direction={"column"} spacing={3} sx={{ width: "100%" }}>
+          <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+            <Typography variant="body1" color="initial">
+              First name
+            </Typography>
+            <InputBase
+              fullWidth
+              variant="outlined"
+              placeholder="Enter your first name"
+              sx={{ ...styless }}
+            />
+          </Stack>
+          <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+            <Typography variant="body1" color="initial">
+              Last name
+            </Typography>
+            <InputBase
+              fullWidth
+              variant="outlined"
+              placeholder="Enter your Last name"
+              sx={{ ...styless }}
+            />
+          </Stack>
+          <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+            <Typography variant="body1" color="initial">
+              Phone number
+            </Typography>
+            <InputBase
+              fullWidth
+              variant="outlined"
+              placeholder="Enter your Mobile Number"
+              sx={{ ...styless }} 
+              InputProps={{
+                startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+                // endAdornment: <InputAdornment position="end">per person</InputAdornment>,
+              }}
+            />
+          </Stack>
+          <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+            <Typography variant="body1" color="initial">
+              Email
+            </Typography>
+            <InputBase
+              fullWidth
+              variant="outlined"
+              placeholder="Enter your Email "
+              sx={{ ...styless }}
+            />
+          </Stack>
+          <Stack direction={"column"} spacing={1} sx={{ width: "100%" }}>
+            <Typography variant="body1" color="initial">
+              Address
+            </Typography>
+            <InputBase
+              fullWidth
+              variant="outlined"
+              placeholder="Enter your Address"
+              sx={{ ...styless }}
+            />
+          </Stack>
+          <Button variant="contained" color="primary">
+            Submit
+          </Button>
+        </Stack>
+      </Box>
+      <Box sx={{ bgcolor: "#EFF2F4", height: "10rem" }} />
     </>
   );
 };

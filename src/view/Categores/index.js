@@ -36,7 +36,7 @@ const Categories = () => {
       >
         { banner.map((value)=>(
 
-        <CategoryCard value={value} key={value.id}/>
+        <CategoryCard value={value} key={value.id} rate={true}/>
         ))}
         {/* <CategoryCard />
         <CategoryCard />

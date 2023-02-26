@@ -21,7 +21,7 @@ const NotificationCard = () => {
       <Box
         sm={12}
         lg={6}
-        sx={{ display: "flex", width: "%", height: "100%" }}
+        sx={{ display: "flex", width: "%", height: "100%", alignItems: 'center' }}
       >
       <Avatar
             alt="Remy Sharp"

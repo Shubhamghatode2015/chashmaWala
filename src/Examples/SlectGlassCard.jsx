@@ -1,5 +1,6 @@
 import { CheckCircle, CheckCircleOutline, Info } from "@mui/icons-material";
 import {
+  Avatar,
   Button,
   Card,
   CardActionArea,
@@ -10,19 +11,23 @@ import {
 import React from "react";
 import { Stack } from "@mui/material";
 // import img from "../assests/image 2386.png"
-import { bgcolor, Box } from "@mui/system";
+import { bgcolor, Box,  } from "@mui/system";
 
-const SlectGlassCard = () => {
+const SlectGlassCard = ({setIsClick}) => {
   return (
     <>
       <Card
         sx={{
           maxWidth: 300,
           height: 500,
-          p: 2,
+          gap: 2,
+          p: 3,
+          background: "white.main",
+          boxShadow: "0px 42px 34px rgba(82, 67, 194, 0.295755)",
+          borderRadius: "26px",
           "&: hover": {
             bgcolor: " #BEE9EA",
-            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px',
+            boxShadow: "0px 42px 34px rgba(82, 67, 194, 0.295755)",
           },
         }}
       >
@@ -30,12 +35,16 @@ const SlectGlassCard = () => {
           <Button
             variant="contained"
             sx={{
-              bgcolor: "#D4D0F4",
+              bgcolor: "#D4D0F4",  color: "secondary.main",
               borderRadius: 4,
               float: "right",
               fontSize: 10,
               fontWeight: 900,
               fontFamily: "inherit",
+              "&: hover": {
+                bgcolor: "#D4D0F4",
+                color: "secondary.main",
+              },
             }}
           >
             MOST POPULAR
@@ -49,18 +58,17 @@ const SlectGlassCard = () => {
           }}
         >
           <Box sx={{ width: 200, height: "6rem" }}>
-            <CardMedia
-              sx={{ height: 90, objectFit: "contain" }}
-              image={require("../assets/images/chashma.jpg")}
-              title="fremkart"
+            <img
+              src={require("../assets/images/chashma.jpg")}
+              alt=".."
+              style={{ width: "100%", height: "100%" }}
             />
           </Box>
         </Box>
 
-        <CardContent>
+        <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 1.5,}}>
           <Stack direction={"row"} spacing={4}>
             <Typography
-              gutterBottom
               variant="h3"
               fontFamily={"inherit"}
               sx={{ fontWeight: 900, fontSize: 28, color: "#444242" }}
@@ -70,7 +78,6 @@ const SlectGlassCard = () => {
             </Typography>
             <Stack direction={"row"}>
               <Typography
-                gutterBottom
                 variant="h3"
                 fontFamily={"inherit"}
                 sx={{ fontWeight: 900, fontSize: 36, color: "#444242" }}
@@ -88,48 +95,115 @@ const SlectGlassCard = () => {
               </Typography>
             </Stack>
           </Stack>
+      
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={require("../assets/images/CheckIcons.png")}
+                style={{ widht: "20px ", height: "20px", marginRight: "1rem" }}
+              />
+              <Typography variant="body1" color="initial">
+                {" "}
+                All limited links
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={require("../assets/images/CheckIcons.png")}
+                style={{ widht: "20px ", height: "20px", marginRight: "1rem" }}
+              />
+              <Typography variant="body1" color="initial">
+                {" "}
+                All limited links
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={require("../assets/images/CheckIcons.png")}
+                style={{ widht: "20px ", height: "20px", marginRight: "1rem" }}
+              />
+              <Typography variant="body1" color="initial">
+                {" "}
+                All limited links
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={require("../assets/images/CheckIcons.png")}
+                style={{ widht: "20px ", height: "20px", marginRight: "1rem" }}
+              />
+              <Typography variant="body1" color="initial">
+                {" "}
+                All limited links
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={require("../assets/images/CheckIcons.png")}
+                style={{ widht: "20px ", height: "20px", marginRight: "1rem" }}
+              />
+              <Typography variant="body1" color="initial">
+                {" "}
+                All limited links
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={require("../assets/images/CheckIcons.png")}
+                style={{ widht: "20px ", height: "20px", marginRight: "1rem" }}
+              />
+              <Typography variant="body1" color="initial">
+                All limited links
+              </Typography>
+            </Box>
 
-          <Button
-            variant="text"
-            sx={{ color: "#444242" }}
-            startIcon={<CheckCircleOutline />}
-          >
-            All limited links
-          </Button>
-          <Button
-            variant="text"
-            sx={{ color: "#444242" }}
-            startIcon={<CheckCircleOutline />}
-          >
-            All limited links
-          </Button>
-          <Button
-            variant="text"
-            sx={{ color: "#444242" }}
-            startIcon={<CheckCircleOutline />}
-          >
-            All limited links
-          </Button>
-          <Button
-            variant="text"
-            sx={{ color: "#444242" }}
-            startIcon={<CheckCircleOutline />}
-          >
-            All limited links
-          </Button>
-          <Button
-            variant="text"
-            sx={{ color: "#444242" }}
-            startIcon={<CheckCircleOutline />}
-          >
-            All limited links
-          </Button>
         </CardContent>
         <CardActionArea>
           <Button
             fullWidth
             variant="contained"
-            sx={{ fontSize: "h6", color: "white.main" }}
+            sx={{ fontSize: "h6", color: "white.main", borderRadius: "24px" }}  onClick={() => setIsClick(true)}
           >
             Choose plan
           </Button>

@@ -3,24 +3,24 @@ import { Box } from "@mui/system";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CatCard = ({ value }) => {
+const CatCard = ({ value,rate }) => {
   return (
     <Box
       sx={{
-        height: { xs: 85, md: "16rem", xl: "16rem" },
+        height: { xs: 85, md: `${rate?  '12rem' : "18rem" }` , xl: "16rem" },
 
         width: "100%",
         p: {xs: 0 , md: 2 , xl: 2 },
         justifyContent:{ xs:  "center", md:  "space-between", xl:  "space-between", },
-        flexDirection: "column",
-        alignItems: "center",
-        display: "flex",
+        flexDirection: "column", alignItems: 'center',
+       textAlign: 'center',
+        display: "flex", gap: 2,
       }}
     >
       <CardMedia
         sx={{
-          height: { xs: 50, md: 180, xl: 180 },
-          width: { xs: 50, md: 180, xl: 180 },
+          height: { xs: 50, md:  160, xl: 180 },
+          width: { xs: 50, md:  160, xl: 180 }, backgrondPosition: 'center', backgroundSize: 'contain'
         }}
         image={value?.img}
         title={value?.id}

@@ -3,7 +3,7 @@ import { Box, Button, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 
 const CartCard = ({value}) => {
-  console.log(value)
+  // console.log(value);
   return (<>
   
   <Box
@@ -16,7 +16,7 @@ const CartCard = ({value}) => {
             }}
           >
             <Box
-              flex={3}
+              flex={2}
               sx={{
                 display: "flex",
                 justifyContent: "flex-start",
@@ -24,23 +24,19 @@ const CartCard = ({value}) => {
               }}
             >
               <CardMedia
-                image={require('../assets/images/shraddha.jpg')}
+                image={value?.imageUrl}
                 sx={{ width: 252, height: 100, objectFit: "contain" }}
                 component="img"
               ></CardMedia>
 
               <CardContent sx={{ py: 1 }} component="div">
-                <Typography
-                  component="div"
-                  sx={{ fontSize: 18, fontWeight: 500 }}
-                >
-                  Premium Square Sunglasses
-                </Typography>
+                <Typography variant="body1" color="initial"  sx={{ fontSize: 18, fontWeight: 600 }}> { value?.brandName} </Typography>
+               
                 <Typography
                   component="div"
                   sx={{ fontSize: 14, fontWeight: 500 }}
                 >
-                  $32.95
+                 ₹ { value?.prices[1].price}
                 </Typography>
                 <Button
                   variant="text"
@@ -68,9 +64,9 @@ const CartCard = ({value}) => {
                 />
               </Button>
             </Box>
-            <Box sx={{ color: "secondary.main" }} flex={0}>
+            <Box sx={{ color: "secondary.main" }} >
               <Typography variant="subtitle" fontWeight={700} color="initial">
-                $6
+              ₹ { value?.prices[1].price}
               </Typography>
             </Box>
           </Box>
